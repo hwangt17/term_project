@@ -29,6 +29,8 @@ We will have a dataset in our library, and a GUI or a Website to run the program
 
 ## Project Schedule
 
+We have 8 weeks (roughly) to finish the project.
+
 Weeks | Task
 ------------ | -------------
 Week 1 | Project Planning
