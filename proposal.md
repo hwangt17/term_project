@@ -1,5 +1,7 @@
 # Team Project Proposal
 
+![Map](https://covid19.who.int/who_share.jpg)
+
 ## The Big Idea
 
 Our big idea is to create a live map of 'COVID19 Safe Zone' for people to find places that are safe to travel. As the pandemic becomes part of our life, we need to adapt to cope with long lasting threat of contracting the virus. We need to act wisely to do our best to prevent infection. Yes we can wear protective gear, wash our hands, and avoid crowded places, but it would be even better if we knew, in advance, which areas are safe to lower the probability of contracting the virus! 
