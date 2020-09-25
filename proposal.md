@@ -1,7 +1,5 @@
 # Team Project Proposal
 
-SAFE HAVENS
-
 ## The Big Idea
 
 Our big idea is to create a live map of 'COVID19 Safe Zone' for people to find places that are safe to travel. As the pandemic becomes part of our life, we need to adapt to cope with long lasting threat of contracting the virus. We need to act wisely to do our best to prevent infection. Yes we can wear protective gear, wash our hands, and avoid crowded places, but it would be even better if we knew, in advance, which areas are safe to lower the probability of contracting the virus! 
@@ -9,10 +7,10 @@ Our big idea is to create a live map of 'COVID19 Safe Zone' for people to find p
 This application will especially be applicable as travel restrictions ease and people's desire to travel increases.
 
 Our stretch goal for this project would be to go even further and provide travel informations like: 
-* famous venues
-* restaurants and cafes
-* directions to the location
-* current travel ristriction status
+* Famous venues
+* Restaurants and Cafes
+* Directions to the location
+* Current travel ristriction status
 
 This application could be valuable for the travel industry and even Map applications like Google Maps and Waze to implement in their applications/platforms.
 
@@ -27,7 +25,7 @@ We want to learn through this project:
 
 ## Implementation Plan
 
-We will have a dataset in our library
+We will have a dataset in our library, and a GUI or a Website to run the program/application.
 
 ## Project Schedule
 
