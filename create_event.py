@@ -11,29 +11,34 @@ def main():
     start = tomorrow.isoformat()
     end = (tomorrow + timedelta(hours=1)).isoformat()
     title = input("Enter Event Title: ")
+
+    # Calendar Parameter
     calendar = { 
         'summary': title,
         'timeZone': 'America/Los_Angeles' 
     }
+
+    # Event Parameter
+    event = {
+        "summary": title,
+        "description": 'This is a tutorial example of automating google calendar with python',
+        "start": {"dateTime": start, "timeZone": 'Asia/Seoul'},
+        "end": {"dateTime": end, "timeZone": 'Asia/Seoul'},
+        "recurrence": [
+        'RRULE:FREQ=DAILY;COUNT=2'
+        ]
+    }
     
+    # Create Calendar
     created_calendar = service.calendars().insert(body=calendar).execute()
-    
-    print(created_calendar['id'])
-    create_event = service.events().insert(calendarId=created_calendar['id'],
-        body={
-            "summary": title,
-            "description": 'This is a tutorial example of automating google calendar with python',
-            "start": {"dateTime": start, "timeZone": 'Asia/Seoul'},
-            "end": {"dateTime": end, "timeZone": 'Asia/Seoul'},
-            "recurrence": [
-                'RRULE:FREQ=DAILY;COUNT=2'
-            ]
-        }
-    ).execute()
+    # Create Event
+    create_event = service.events().insert(calendarId=created_calendar['id'], body=event).execute()
 
-
+    # Print on Terminal
+    print("created calendar")
+    print("calendar id: ", created_calendar['id'])
     print("created event")
-    print("id: ", create_event['id'])
+    print("event id: ", create_event['id'])
     print("summary: ", create_event['summary'])
     print("starts at: ", create_event['start']['dateTime'])
     print("ends at: ", create_event['end']['dateTime'])
