@@ -1,13 +1,16 @@
 from datetime import datetime, timedelta
 from cal_setup import get_google_cal
+import list_event
 
+def check_availability():
+    
 
 def main():
     # creates one hour event tomorrow 10 AM IST
     service = get_google_cal()
 
-    d = datetime.now().date()
-    tomorrow = datetime(d.year, d.month, d.day, 10)+timedelta(days=1)
+    today = datetime.now().date()
+    tomorrow = datetime(today.year, today.month, today.day, 10)+timedelta(days=1)
     start = tomorrow.isoformat()
     end = (tomorrow + timedelta(hours=1)).isoformat()
     title = input("Enter Event Title: ")
@@ -15,13 +18,12 @@ def main():
     # Calendar Parameter
     calendar = { 
         'summary': title,
-        'timeZone': 'America/Los_Angeles' 
+        'timeZone': 'Asia/Seoul' 
     }
 
     # Event Parameter
     event = {
         "summary": title,
-        "description": 'This is a tutorial example of automating google calendar with python',
         "start": {"dateTime": start, "timeZone": 'Asia/Seoul'},
         "end": {"dateTime": end, "timeZone": 'Asia/Seoul'},
         "recurrence": [
