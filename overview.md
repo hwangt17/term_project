@@ -2,8 +2,8 @@
 
 ## What is Fillup?
 
-*Did you ever feel stressed organizing your calendar? Do you want your personal secretary to neatly arrange your day? *
-
+*Did you ever feel stressed organizing your calendar? Do you want your personal secretary to neatly arrange your day? 
+*
 Fillup, a scheduling automation application, eases the stress of the scheduling process. Users are asked to input the task’s title, duration, choice of morning or afternoon, and frequency a test per week. Based on this given criteria, the application will randomly select the available time block in the user's calendar. 
 
 ## README
