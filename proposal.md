@@ -1,20 +1,14 @@
 # Team Project Proposal
 
-![Map](https://covid19.who.int/who_share.jpg)
+![Calendar](https://media.gcflearnfree.org/content/560be4f6557fa909dc9cf5a1_09_30_2015/tips_calendar_intro.jpg)
 
 ## The Big Idea
 
-Our big idea is to create a live map of 'COVID19 Safe Zone' for people to find places that are safe to travel. As the pandemic becomes part of our life, we need to adapt to cope with long lasting threat of contracting the virus. We need to act wisely to do our best to prevent infection. Yes we can wear protective gear, wash our hands, and avoid crowded places, but it would be even better if we knew, in advance, which areas are safe to lower the probability of contracting the virus! 
+Our big idea is to create an automation that randomly assign the time block based on the user's inputed *task title* and *duration* and *frequency* in his or her original schedule in Google Calendar. 
 
-This application will especially be applicable as travel restrictions ease and people's desire to travel increases.
+This application will especially be applicable as more people want to be productive in Work From Home (WFH) setting and online learning atmosphere. It will optimize the **productivity** of users by allowing them to spend less time building calendar. 
 
-Our stretch goal for this project would be to go even further and provide travel informations like: 
-* Famous venues
-* Restaurants and Cafes
-* Directions to the location
-* Current travel ristriction status
-
-This application could be valuable for the travel industry and even Map applications like Google Maps and Waze to implement in their applications/platforms.
+This application could be valuable for everyone who utilizes Google Calendar and other mobile calendar platforms. 
 
 ## Learning Goals
 
@@ -27,22 +21,22 @@ We want to learn through this project:
 
 ## Implementation Plan
 
-We will have a dataset in our library, and a GUI or a Website to run the program/application.
+We will have a dataset in our library, and a Flask to run a web application.
 
 ## Project Schedule
 
 We have 8 weeks (roughly) to finish the project.
 
-Weeks | Task
------------- | -------------
-Week 1 | Project Planning
-Week 2 | Design Review
-Week 3 | Code Review
-Week 4 | Mid-Project Presentation
-Week 5 | Testing
-Week 5 | Project Website
-Week 7 | Final Demo / Presentation Session
-Week 8 | Code Submission
+| Weeks  | Task                              |
+| ------ | --------------------------------- |
+| Week 1 | Project Planning                  |
+| Week 2 | Design Review                     |
+| Week 3 | Code Review                       |
+| Week 4 | Mid-Project Presentation          |
+| Week 5 | Testing                           |
+| Week 5 | Project Website                   |
+| Week 7 | Final Demo / Presentation Session |
+| Week 8 | Code Submission                   |
 
 
 ## Collaboration Plan
