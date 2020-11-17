@@ -1,6 +1,6 @@
 # Team Project Proposal
 
-![Map](https://covid19.who.int/who_share.jpg)
+![Calendar](https://media.gcflearnfree.org/content/560be4f6557fa909dc9cf5a1_09_30_2015/tips_calendar_intro.jpg)
 
 ## The Big Idea
 
