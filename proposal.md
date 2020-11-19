@@ -21,7 +21,7 @@ We want to learn through this project:
 
 ## Implementation Plan
 
-We will have a dataset in our library, and a Flask to run a web application.
+We will have a dataset in our library, Google Calendar Open API, OAuth 2.0 Client ID and a Flask to run a web application.
 
 ## Project Schedule
 
