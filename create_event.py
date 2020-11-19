@@ -1,9 +1,7 @@
 from datetime import datetime, timedelta
 from cal_setup import get_google_cal
+from tzlocal import get_localzone
 import list_event
-
-def check_availability():
-    
 
 def main():
     # creates one hour event tomorrow 10 AM IST
@@ -14,21 +12,21 @@ def main():
     start = tomorrow.isoformat()
     end = (tomorrow + timedelta(hours=1)).isoformat()
     title = input("Enter Event Title: ")
+    frequency = input("How many times a week: ")
+    local_tz = get_localzone() # Call the Local Timezone
+    local_timezone = str(local_tz) # Convert to string
 
     # Calendar Parameter
     calendar = { 
         'summary': title,
-        'timeZone': 'Asia/Seoul' 
+        'timeZone': local_timezone
     }
 
     # Event Parameter
     event = {
         "summary": title,
-        "start": {"dateTime": start, "timeZone": 'Asia/Seoul'},
-        "end": {"dateTime": end, "timeZone": 'Asia/Seoul'},
-        "recurrence": [
-        'RRULE:FREQ=DAILY;COUNT=2'
-        ]
+        "start": {"dateTime": start, 'timeZone': local_timezone},
+        "end": {"dateTime": end, 'timeZone': local_timezone}
     }
     
     # Create Calendar
