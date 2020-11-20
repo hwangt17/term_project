@@ -2,20 +2,22 @@ from datetime import datetime, timedelta
 from cal_setup import get_google_cal
 from tzlocal import get_localzone
 
-def main():
-    service = get_google_cal() # Call the Calendar API
+service = get_google_cal() # Call the Calendar API
+
+def get_list_event(count):
+    """
+    Get all events from all calendars
+    """
     local_tz = get_localzone() # Call the Local Timezone
 
     now = datetime.utcnow() # Get the datetime now in UTC Timezone
-
     # Precondition: Events are planned for starting the day after 'now'.
     # Start of the day (07:00:00) and the end of the day (23:00:00)       
-    beginning = datetime(now.year, now.month, now.day, 7).astimezone(local_tz)+timedelta(days=1) # Start of the day is 07:00:00 tomorrow 
+    beginning = datetime(now.year, now.month, now.day, 7).astimezone(local_tz)+timedelta(days=count) # Start of the day is 07:00:00 tomorrow 
     beginning_format = beginning.isoformat() # Format for Google Calendar API
-    ending = datetime(now.year, now.month, now.day, 23).astimezone(local_tz)+timedelta(days=1) # End of the day is 23:00:00 tomorrow.
+    ending = datetime(now.year, now.month, now.day, 23).astimezone(local_tz)+timedelta(days=count) # End of the day is 23:00:00 tomorrow.
     ending_format = ending.isoformat() # Format for Google Calendar API
-    print(beginning_format)
-    print(ending_format)
+    # print(f'From: {beginning_format} \nTo: {ending_format}')
 
     # Get list of calendars
     cal_ids = list()
@@ -24,23 +26,31 @@ def main():
     calendars = calendar_list.get('items', [])
     for calendar in calendars:
         cal_ids.append(calendar['id'])
-    print(cal_ids)
-    # Getting list of events 
-    print('Getting List Events')
+    # print(cal_ids)
+
+    # Getting list of events from all calendars 
+    events = list()
     for cal_id in cal_ids:
         events_result = service.events().list(
             calendarId=cal_id, timeMin=beginning_format, timeMax=ending_format,
             timeZone=local_tz, maxResults=1000, singleEvents=True,
             orderBy='startTime').execute()
-        events = events_result.get('items', [])
+        events.extend(events_result.get('items'))
+    return events
+ 
 
+def main():
+
+    events = get_list_event(1)
+    # Check Get Cal List
+    print('Getting List Events')
     # Print list of events in the calendar
     if not events:
         print('No upcoming events found.')
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         end = event['end'].get('dateTime', event['end'].get('date'))
-        print(start, end, event['summary'])
+        print([start, end, event['summary']])
 
 if __name__ == '__main__':
     main()
