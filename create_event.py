@@ -33,7 +33,7 @@ def main():
     created_calendar = service.calendars().insert(body=calendar).execute()
     # Create Event
     create_event = service.events().insert(calendarId=created_calendar['id'], body=event).execute()
-
+    
     # Print on Terminal
     print("created calendar")
     print("calendar id: ", created_calendar['id'])
