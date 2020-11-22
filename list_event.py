@@ -6,7 +6,8 @@ service = get_google_cal() # Call the Calendar API
 
 def get_list_event(count):
     """
-    Get all events from all calendars
+    Get all events from all calendars.
+    count: count of days (used for range)
     """
     local_tz = get_localzone() # Call the Local Timezone
 
@@ -37,14 +38,11 @@ def get_list_event(count):
             orderBy='startTime').execute()
         events.extend(events_result.get('items'))
     return events
- 
 
 def main():
-
+    # Print on terminal
     events = get_list_event(1)
-    # Check Get Cal List
     print('Getting List Events')
-    # Print list of events in the calendar
     if not events:
         print('No upcoming events found.')
     for event in events:
