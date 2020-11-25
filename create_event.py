@@ -38,9 +38,9 @@ def create_event(service, cal_id, start, end, title, count, length):
     create_event = service.events().insert(calendarId=cal_id, body=event).execute()   
 
     # Print on Terminal
-    print("created calendar")
+    print("\nCreated calendar:")
     print("calendar id: ", cal_id)
-    print("created event")
+    print("Created event:")
     print("event id: ", create_event['id'])
     print("summary: ", create_event['summary'])
     print("starts at: ", create_event['start']['dateTime'])

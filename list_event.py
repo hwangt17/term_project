@@ -35,6 +35,7 @@ def get_list_event(service, count, earliest, latest):
             timeZone=local_tz, maxResults=1000, singleEvents=True,
             orderBy='startTime').execute()
         events.extend(events_result.get('items'))
+    print("Getting list of events...")
     return events
 
 def main():

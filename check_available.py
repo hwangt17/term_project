@@ -52,8 +52,10 @@ def store_events(service,count, earliest, latest):
     index_events = {}
     for index, (key, (start, end)) in enumerate(sorted_events.items()):
         index_events[index] = (start, end)
+    print("Indexing events in order...")
     return index_events
 
+### BOTTLENECK! NEED FIXING ###
 def check_vacancy(service,duration,count,earliest,latest):
     """
     Check vacant time block of a given duration.
