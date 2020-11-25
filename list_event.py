@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from cal_setup import get_google_cal
 from tzlocal import get_localzone
 
-def get_list_event(service, count):
+def get_list_event(service, count, earliest, latest):
     """
     Get all events from all calendars.
     count: count of days (used for range)
@@ -12,9 +12,9 @@ def get_list_event(service, count):
     now = datetime.utcnow() # Get the datetime now in UTC Timezone
     # Precondition: Events are planned for starting the day after 'now'.
     # Start of the day (07:00:00) and the end of the day (23:00:00)       
-    beginning = datetime(now.year, now.month, now.day, 7).astimezone(local_tz)+timedelta(days=count) # Start of the day is 07:00:00 tomorrow 
+    beginning = datetime(now.year, now.month, now.day, earliest).astimezone(local_tz)+timedelta(days=count) # Start of the day is 07:00:00 tomorrow 
     beginning_format = beginning.isoformat() # Format for Google Calendar API
-    ending = datetime(now.year, now.month, now.day, 23).astimezone(local_tz)+timedelta(days=count) # End of the day is 23:00:00 tomorrow.
+    ending = datetime(now.year, now.month, now.day, latest).astimezone(local_tz)+timedelta(days=count) # End of the day is 23:00:00 tomorrow.
     ending_format = ending.isoformat() # Format for Google Calendar API
     # print(f'From: {beginning_format} \nTo: {ending_format}')
 
@@ -41,11 +41,11 @@ def main():
     service = get_google_cal() # Call the Calendar API
 
     # Print on terminal
-    events = get_list_event(service,3)
+    events = get_list_event(service,3,7,23)
     print('Getting List Events')
     if not events:
         print('No upcoming events found.')
-        
+
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         end = event['end'].get('dateTime', event['end'].get('date'))
