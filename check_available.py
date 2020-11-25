@@ -6,7 +6,7 @@ import create_event
 
 def store_events(count):
     """
-
+    This function reads the user's schedule for a given day, detecting start and end time of each event. 
     """
     store_event = dict()
     event_vessel = list()
@@ -41,8 +41,13 @@ def store_events(count):
         # elapsed = no_isoformat_end - no_isoformat_start
     return store_event
 
+
+def check_vacancy(store_events, count):
+    event_days = store_events(count)
+
+
 def main():
-    print(store_events(1))
+    print(store_events())
 
 if __name__ == '__main__':
     main()
