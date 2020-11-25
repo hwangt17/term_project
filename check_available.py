@@ -1,17 +1,15 @@
-from datetime import datetime, timedelta
-from cal_setup import get_google_cal
-from tzlocal import get_localzone
-from list_event import get_list_event
-import create_event 
-from tzlocal import get_localzone
+from datetime import datetime, timedelta # Datetime
+from cal_setup import get_google_cal # Access Google Acc
+from tzlocal import get_localzone # Get local timezone
+from list_event import get_list_event # Get list of all events
 
-def store_events(count):
+def store_events(service,count):
     """
     This function reads the user's schedule for a given day, detecting start and end time of each event. 
     """
     store_event = dict()
     event_vessel = list()
-    events = get_list_event(count)
+    events = get_list_event(service,count)
     i = 1
     
     for event in events:
@@ -56,20 +54,25 @@ def store_events(count):
         index_events[index] = (start, end)
     return index_events
 
-def check_vacancy(duration,count):
+def check_vacancy(service,duration,count):
     """
     Check vacant time block of a given duration.
     """
     local_tz = get_localzone() # Call the Local Timezone
     vacant_times = {}
-    events = store_events(count)
-
+    events = store_events(service,count)
+    
     # List all vacant timeslots and it's duration in order.
     for i in range(len(events)+1):
         # from 7:00:00 to the start of first event.
         if i == 0: 
-            end = events[i][0]
-            start = datetime(end.year, end.month, end.day, 7).astimezone(local_tz)
+            if not events:
+                now = datetime.utcnow() # Get the datetime now in UTC Timezone
+                start = datetime(now.year, now.month, now.day, 7).astimezone(local_tz)+timedelta(days=count)
+                end = datetime(now.year, now.month, now.day, 23).astimezone(local_tz)+timedelta(days=count)
+            else:
+                end = events[i][0]
+                start = datetime(end.year, end.month, end.day, 7).astimezone(local_tz)
         # from end of the last event to 23:00:00.
         elif i >= len(events):
             start = events[i-1][1]
@@ -91,8 +94,34 @@ def check_vacancy(duration,count):
         else:
             pass
 
+def vacancy_in_freq(service,duration,frequency):
+    """
+    Check vacant timeslot with the user inputed duration for the frequency/week the user inputed.
+    """
+    result = {}
+    week = 7
+    for i in range(week):
+        if check_vacancy(service,duration,i+1) == None:
+            print(f'No slots left on this date. Still {frequency} spots left in the week to fill.')
+            pass
+        else:
+            result[i+1] = check_vacancy(service,duration,i+1)
+            frequency -= 1
+            print(f'Yes! There is a timeslot! Now {frequency} spots left in the week.')
+        if frequency == 0:
+            break
+    return result
+
+
 def main():
-    print(check_vacancy(60,1))
+    service = get_google_cal() # Call the Calendar API
+    
+    vacant = vacancy_in_freq(service,60,2)
+    for index, (start,end,length) in vacant.items():
+        a = vacant[index][0]
+        print(a)
+    # print(check_vacancy(service,60,2))
+
 
 if __name__ == '__main__':
     main()

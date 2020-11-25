@@ -2,9 +2,7 @@ from datetime import datetime, timedelta
 from cal_setup import get_google_cal
 from tzlocal import get_localzone
 
-service = get_google_cal() # Call the Calendar API
-
-def get_list_event(count):
+def get_list_event(service, count):
     """
     Get all events from all calendars.
     count: count of days (used for range)
@@ -40,16 +38,18 @@ def get_list_event(count):
     return events
 
 def main():
+    service = get_google_cal() # Call the Calendar API
+
     # Print on terminal
-    for i in range(1):
-        events = get_list_event(i+1)
-        print('Getting List Events')
-        if not events:
-            print('No upcoming events found.')
-        for event in events:
-            start = event['start'].get('dateTime', event['start'].get('date'))
-            end = event['end'].get('dateTime', event['end'].get('date'))
-            print([start, end, event['summary']])
+    events = get_list_event(service,3)
+    print('Getting List Events')
+    if not events:
+        print('No upcoming events found.')
+        
+    for event in events:
+        start = event['start'].get('dateTime', event['start'].get('date'))
+        end = event['end'].get('dateTime', event['end'].get('date'))
+        print([start, end, event['summary']])
 
 if __name__ == '__main__':
     main()
