@@ -41,14 +41,15 @@ def get_list_event(count):
 
 def main():
     # Print on terminal
-    events = get_list_event(1)
-    print('Getting List Events')
-    if not events:
-        print('No upcoming events found.')
-    for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        end = event['end'].get('dateTime', event['end'].get('date'))
-        print([start, end, event['summary']])
+    for i in range(1):
+        events = get_list_event(i+1)
+        print('Getting List Events')
+        if not events:
+            print('No upcoming events found.')
+        for event in events:
+            start = event['start'].get('dateTime', event['start'].get('date'))
+            end = event['end'].get('dateTime', event['end'].get('date'))
+            print([start, end, event['summary']])
 
 if __name__ == '__main__':
     main()
