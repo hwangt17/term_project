@@ -18,11 +18,13 @@ def create_calendar(service, title):
 
     # Create Calendar
     created_calendar = service.calendars().insert(body=calendar).execute()
+    print("\nCreated Calendar:")
+    print("calendar Title: ", title)
     return created_calendar['id']
 
 def create_event(service, cal_id, start, end, title, count, length):
     """
-    Create event.
+    Create Event.
     """
     local_tz = get_localzone() # Call the Local Timezone
     local_timezone = str(local_tz) # Convert to string 
@@ -38,9 +40,7 @@ def create_event(service, cal_id, start, end, title, count, length):
     create_event = service.events().insert(calendarId=cal_id, body=event).execute()   
 
     # Print on Terminal
-    print("\nCreated calendar:")
-    print("calendar id: ", cal_id)
-    print("Created event:")
+    print("\nCreated Event:")
     print("event id: ", create_event['id'])
     print("summary: ", create_event['summary'])
     print("starts at: ", create_event['start']['dateTime'])
