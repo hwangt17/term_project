@@ -21,10 +21,10 @@
 <body class="body">
   <div data-collapse="tiny" data-animation="default" data-duration="400" role="banner" class="navbar w-nav">
     <div class="container w-container">
-      <a href="index.html" aria-current="page" class="w-nav-brand w--current"><img src= "{{ url_for('static', filename='images/Fillup_Logo.svg') }}" loading="lazy" alt="" class="nav_logo_img"></a>
+      <a href="{{ url_for('index') }}" aria-current="page" class="w-nav-brand w--current"><img src= "{{ url_for('static', filename='images/Fillup_Logo.svg') }}" loading="lazy" alt="" class="nav_logo_img"></a>
       <nav role="navigation" class="nav-menu w-nav-menu">
-        <a href="overview.html" class="nav_link w-nav-link">Overview</a>
-        <a href="about.html" class="nav_link w-nav-link">About</a>
+        <a href="{{ url_for('overview') }}" class="nav_link w-nav-link">Overview</a>
+        <a href="{{ url_for('about') }}" class="nav_link w-nav-link">About</a>
       </nav>
       <div class="w-nav-button">
         <div class="w-icon-nav-menu"></div>
@@ -34,7 +34,7 @@
   <div class="hero_section">
     <div class="hero_container w-container">
       <h1 class="title_heading">Fillup Your Calendar Automatically!</h1>
-      <a href="automate.html" class="cta_button w-button"><strong>Get Started!</strong></a>
+      <a href="{{ url_for('automate') }}" class="cta_button w-button"><strong>Get Started!</strong></a>
     </div>
   </div>
   <div data-w-id="f7e4c268-7a5a-db9f-de27-8536c890f132" data-animation-type="lottie" data-src="{{ url_for('static', filename='documents/home_lottie.json') }}" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="6.016666666666667" data-duration="0" class="lottie-animation"></div>

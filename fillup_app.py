@@ -7,9 +7,25 @@ from create_event import create_calendar, create_event # Create Calendar and Eve
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def index():
     return render_template("index.html")
+
+@app.route('/automate')
+def automate():
+    return render_template("automate.html")
+
+@app.route('/overview')
+def overview():
+    return render_template("overview.html")
+
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+@app.route('/404')
+def error():
+    return render_template("404.html")
 
 # @app.route('/fillup', methods=['GET','POST'])
 # def fillup():
