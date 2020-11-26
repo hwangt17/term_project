@@ -27,9 +27,9 @@ def about():
 def error():
     return render_template("404.html")
 
-@app.route('/fillup', methods=['GET','POST'])
-def fillup():
-    service = get_google_cal()
+# @app.route('/fillup', methods=['GET','POST'])
+# def fillup():
+#     service = get_google_cal()
 
 #     title = input("Enter Event Title -> ")
 #     frequency = input("How many times a week -> ")

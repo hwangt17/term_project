@@ -61,6 +61,7 @@
 }
 
 .title_heading {
+  width: 100%;
   margin-bottom: 70px;
   font-family: Montserrat, sans-serif;
   color: #fff;
@@ -120,7 +121,8 @@
 }
 
 .nav_logo_img {
-  max-width: 50%;
+  height: 5vh;
+  max-width: none;
   margin-top: 0vh;
   margin-bottom: 0vh;
 }
@@ -162,7 +164,8 @@
   right: 0%;
   bottom: 0%;
   z-index: -2;
-  max-width: 100%;
+  max-height: 100vh;
+  max-width: none;
   margin-top: 10%;
   margin-bottom: 10%;
   margin-left: 0%;
@@ -187,6 +190,10 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
 }
 
 .bold-text {
@@ -614,4 +621,123 @@
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
+}
+
+.lottie-animation-4 {
+  position: fixed;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
+}
+
+@media screen and (max-width: 991px) {
+  .cta_button {
+    width: 30%;
+  }
+
+  .form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .title_heading {
+    font-size: 60px;
+    line-height: 80px;
+  }
+
+  .cta_button {
+    width: 40%;
+  }
+
+  .container {
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+
+  .form {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .title_heading {
+    font-size: 30px;
+    line-height: 50px;
+  }
+
+  .cta_button {
+    width: 60%;
+  }
+
+  .nav_link {
+    background-color: #b1a4e7;
+  }
+
+  .nav_link.w--current {
+    background-color: #b1a4e7;
+  }
+
+  .heading {
+    font-size: 25px;
+    line-height: 30px;
+  }
+
+  .submit-button {
+    width: 80%;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .bold-text-2 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .paragraph {
+    font-size: 12px;
+  }
+
+  .icon {
+    color: #fff;
+  }
+
+  .bold-text-3 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .bold-text-4 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .italic-text {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .bold-text-5 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .bold-text-6 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .menu-button {
+    background-color: transparent;
+  }
+
+  .menu-button.w--open {
+    background-color: transparent;
+  }
+
+  .lottie-animation-4 {
+    height: 100vh;
+  }
 }
