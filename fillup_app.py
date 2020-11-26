@@ -9,23 +9,24 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return "<h1>Welcome to our server !!</h1>"
+    # return render_template("index.html")
 
-@app.route('/automate')
-def automate():
-    return render_template("automate.html")
+# @app.route('/automate')
+# def automate():
+#     return render_template("automate.html")
 
-@app.route('/overview')
-def overview():
-    return render_template("overview.html")
+# @app.route('/overview')
+# def overview():
+#     return render_template("overview.html")
 
-@app.route('/about')
-def about():
-    return render_template("about.html")
+# @app.route('/about')
+# def about():
+#     return render_template("about.html")
 
-@app.route('/404')
-def error():
-    return render_template("404.html")
+# @app.route('/404')
+# def error():
+#     return render_template("404.html")
 
 # @app.route('/fillup', methods=['GET','POST'])
 # def fillup():
