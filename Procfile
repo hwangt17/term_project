@@ -1,1 +1,1 @@
-web: python fillup_app.py
+web: gunicorn app:fillup_app
