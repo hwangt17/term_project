@@ -46,6 +46,7 @@ def create_event(service, cal_id, start, end, title, count, length):
     print("starts at: ", create_event['start']['dateTime'])
     print("ends at: ", create_event['end']['dateTime'])
     print("calendar link: ", create_event.get('htmlLink'))
+    return create_event.get('htmlLink')
 
 
 def main():
