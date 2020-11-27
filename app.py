@@ -6,6 +6,13 @@ from check_available import vacancy_based_on_freq # Check available timeslot
 from create_event import create_calendar, create_event # Create Calendar and Event
 import webbrowser
 
+import pickle
+import os.path
+
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -18,7 +25,16 @@ def automate():
 
 @app.route('/result', methods=['POST','GET'])
 def result():
-    service = get_google_cal()
+
+    SCOPES = ['https://www.googleapis.com/auth/calendar']
+
+    CREDENTIALS_FILE = 'credentials.json'
+
+    flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
+
+    creds = flow.run_console()
+
+    service = build('calendar', 'v3', credentials=creds)
 
     if request.method == 'POST':
         title = request.form['Task Name']
@@ -37,7 +53,7 @@ def result():
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length)
 
-        return render_template("result.html"), webbrowser.open_new_tab(result)
+        return webbrowser.open_new_tab(service), render_template("result.html"), webbrowser.open_new_tab(result)
 
 @app.route('/overview')
 def overview():

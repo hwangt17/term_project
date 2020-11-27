@@ -12,6 +12,7 @@ def get_google_cal():
     CREDENTIALS_FILE = 'credentials.json'
 
     flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
+
     creds = flow.run_local_server(port=0)
 
     # creds = None
@@ -36,3 +37,9 @@ def get_google_cal():
 
     service = build('calendar', 'v3', credentials=creds)
     return service
+
+def main():
+    service = get_google_cal()
+
+if __name__ == '__main__':
+    main()
