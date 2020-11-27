@@ -32,6 +32,8 @@ def result():
 
     flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
 
+    auth_url, _ = flow.authorization_url(prompt='consent')
+
     creds = flow.run_local_server(port=0)
 
     service = build('calendar', 'v3', credentials=creds)
@@ -53,7 +55,7 @@ def result():
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length)
 
-        return webbrowser.open_new_tab(service), render_template("result.html"), webbrowser.open_new_tab(result)
+        return webbrowser.open_new_tab((auth_url)), render_template("result.html"), webbrowser.open_new_tab(result)
 
 @app.route('/overview')
 def overview():

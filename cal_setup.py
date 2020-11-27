@@ -10,10 +10,16 @@ def get_google_cal():
     SCOPES = ['https://www.googleapis.com/auth/calendar']
 
     CREDENTIALS_FILE = 'credentials.json'
-
+    
     flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
 
+    auth_url, _ = flow.authorization_url(prompt='consent')
+    
+    print('{}'.format(auth_url))
+
     creds = flow.run_local_server(port=0)
+
+
 
     # creds = None
     # # The file token.pickle stores the user's access and refresh tokens, and is
@@ -40,6 +46,8 @@ def get_google_cal():
 
 def main():
     service = get_google_cal()
+    g = str(service)
+    print(g)
 
 if __name__ == '__main__':
     main()
