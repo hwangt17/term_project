@@ -33,7 +33,7 @@ def automate():
     
     service = build('calendar', 'v3', credentials=creds)
 
-    return webbrowser.open_new(auth_url), render_template("automate.html", service=service)
+    return webbrowser.open_new(auth_url)
     
 
 
