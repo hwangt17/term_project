@@ -11,11 +11,32 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/automate', methods=['GET','POST'])
+@app.route('/automate')
 def automate():
+    return render_template("automate.html")
+
+@app.route('/result', methods=['POST','GET'])
+def result():
     service = get_google_cal()
 
-    return render_template("automate.html")
+    if request.method == 'POST':
+        title = request.form['Task Name']
+        length = request.form['Duration']
+        frequency = request.form['Frequency']
+        earliest_time = request.form['Earliest']
+        latest_time = request.form['Latest']
+        
+        cal_id = create_calendar(service, title)
+
+        vacant = vacancy_based_on_freq(service,int(length),int(frequency),int(earliest_time),int(latest_time))
+        
+        for index, value in vacant.items():
+            available_start = vacant[index][0]
+            start = (available_start + timedelta(minutes=15)).isoformat()
+            end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
+            result = create_event(service, cal_id, start, end, title, frequency, length)
+
+        return redirect(result)
 
 @app.route('/overview')
 def overview():
@@ -28,21 +49,6 @@ def about():
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template("404.html"), 404
-
-#     title = input("Enter Event Title -> ")
-#     frequency = input("How many times a week -> ")
-#     length = input("How long do you want the event to be? Enter in minutes -> ")
-#     earliest_time = input("When do you want the events to start at the earliest? (Enter 0 ~ 23)-> ")
-#     latest_time = input("When do you want the events to end at the lastest? (Enter 0 ~ 23) -> ")
-#     print("-----------------------")
-#     cal_id = create_calendar(service, title)
-
-#     vacant = vacancy_based_on_freq(service,int(length),int(frequency),int(earliest_time),int(latest_time))
-#     for index, value in vacant.items():
-#         available_start = vacant[index][0]
-#         start = (available_start + timedelta(minutes=15)).isoformat()
-#         end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
-#         create_event(service, cal_id, start, end, title, frequency, length)
 
 if __name__ == '__main__':
     app.run(threaded=True, port=5000) 

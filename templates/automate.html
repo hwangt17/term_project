@@ -34,12 +34,12 @@
   <div class="input_section">
     <div class="automate_container w-container">
       <div class="form-block w-form">
-        <form id="wf-form-Create-Task" name="wf-form-Create-Task" data-name="Create Task" redirect="https://" data-redirect="https://" class="form">
+        <form id="wf-form-Create-Task" name="wf-form-Create-Task" data-name="Create Task" class="form" method="POST" action="/result">
           <h1 class="heading">Create Your Task!</h1>
           <p class="paragraph">Enter the following information below to automatically create your task for the week.</p>
-          <div class="input_block"><label for="name" class="field-label"><strong class="bold-text-3">What is the name of the task?<br></strong></label><input type="text" class="input_field w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name"></div>
-          <div class="input_block"><label for="name-3" class="field-label"><strong class="bold-text-4">How long do you want the task to be? <br></strong><em class="italic-text">(Enter in minutes)</em></label><input type="text" class="input_field w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"></div>
-          <div class="input_block"><label for="Frequency-2" class="field-label"><strong class="bold-text-5">How many times a week? <br></strong></label><select id="Frequency-2" name="Frequency-2" data-name="Frequency 2" required="" class="select_input w-select">
+          <div class="input_block"><label for="name" class="field-label"><strong class="bold-text-3">What is the name of the task?<br></strong></label><input type="text" class="input_field w-input" maxlength="256" name="Task Name" data-name="Task Name" placeholder="" id="name"></div>
+          <div class="input_block"><label for="name-3" class="field-label"><strong class="bold-text-4">How long do you want the task to be? <br></strong><em class="italic-text">(Enter in minutes)</em></label><input type="text" class="input_field w-input" maxlength="256" name="Duration" data-name="Duration" placeholder="" id="name-2"></div>
+          <div class="input_block"><label for="Frequency-2" class="field-label"><strong class="bold-text-5">How many times a week? <br></strong></label><select id="Frequency-2" name="Frequency" data-name="Frequency 2" required="" class="select_input w-select">
               <option value="1">Once</option>
               <option value="2">Twice</option>
               <option value="3">Thee times</option>
@@ -51,7 +51,7 @@
           <div class="input_block">
             <div class="text-block"><strong class="bold-text-6">What is the set time boundary for the task?</strong></div>
             <div class="hori_div">
-              <div class="input_block _2"><label for="Times-2" class="field-label"><strong class="bold-text-2">Earliest:<br></strong></label><select id="Times" name="Times" data-name="Times" required="" class="select_input w-select">
+              <div class="input_block _2"><label for="Times-2" class="field-label"><strong class="bold-text-2">Earliest:<br></strong></label><select id="Times" name="Earliest" data-name="Times" required="" class="select_input w-select">
                   <option value="1">1AM</option>
                   <option value="2">2AM</option>
                   <option value="3">3AM</option>
@@ -76,7 +76,7 @@
                   <option value="22">10PM</option>
                   <option value="23">11PM</option>
                 </select></div>
-              <div class="input_block _2"><label for="Times" class="field-label"><strong class="bold-text-2">Latest:<br></strong></label><select id="Times-2" name="Times-2" data-name="Times 2" required="" class="select_input w-select">
+              <div class="input_block _2"><label for="Times" class="field-label"><strong class="bold-text-2">Latest:<br></strong></label><select id="Times-2" name="Latest" data-name="Times 2" required="" class="select_input w-select">
                   <option value="1">1AM</option>
                   <option value="2">2AM</option>
                   <option value="3">3AM</option>
