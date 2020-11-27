@@ -11,8 +11,10 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/automate')
+@app.route('/automate', methods=['GET','POST'])
 def automate():
+    service = get_google_cal()
+
     return render_template("automate.html")
 
 @app.route('/overview')
@@ -23,13 +25,9 @@ def overview():
 def about():
     return render_template("about.html")
 
-@app.route('/404')
-def error():
-    return render_template("404.html")
-
-# @app.route('/fillup', methods=['GET','POST'])
-# def fillup():
-#     service = get_google_cal()
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template("404.html"), 404
 
 #     title = input("Enter Event Title -> ")
 #     frequency = input("How many times a week -> ")
@@ -47,4 +45,4 @@ def error():
 #         create_event(service, cal_id, start, end, title, frequency, length)
 
 if __name__ == '__main__':
-    app.run(threaded=True, port=5000)
+    app.run(threaded=True, port=5000) 
