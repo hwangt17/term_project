@@ -15,7 +15,7 @@ def get_google_cal():
 
     auth_url, _ = flow.authorization_url(prompt='consent')
     
-    print('{}'.format(auth_url))
+    print(auth_url)
 
     creds = flow.run_local_server(port=0)
 

@@ -19,13 +19,8 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/automate')
+@app.route('/automate', methods=['POST','GET'])
 def automate():
-    return render_template("automate.html")
-
-@app.route('/result', methods=['POST','GET'])
-def result():
-
     SCOPES = ['https://www.googleapis.com/auth/calendar']
 
     CREDENTIALS_FILE = 'credentials.json'
@@ -35,8 +30,28 @@ def result():
     auth_url, _ = flow.authorization_url(prompt='consent')
 
     creds = flow.run_local_server(port=0)
-
+    
     service = build('calendar', 'v3', credentials=creds)
+
+    return webbrowser.open_new(auth_url), render_template("automate.html", service=service)
+    
+
+
+@app.route('/result', methods=['POST','GET'])
+def result():
+    service = request.data('service')
+
+    # SCOPES = ['https://www.googleapis.com/auth/calendar']
+
+    # CREDENTIALS_FILE = 'credentials.json'
+
+    # flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
+
+    # auth_url, _ = flow.authorization_url(prompt='consent')
+
+    # creds = flow.run_local_server(port=0)
+
+    # service = build('calendar', 'v3', credentials=creds)
 
     if request.method == 'POST':
         title = request.form['Task Name']
@@ -55,7 +70,7 @@ def result():
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length)
 
-        return webbrowser.open_new_tab((auth_url)), render_template("result.html"), webbrowser.open_new_tab(result)
+        return render_template("result.html"), webbrowser.open_new_tab(result)
 
 @app.route('/overview')
 def overview():
