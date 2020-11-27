@@ -4,6 +4,7 @@ from cal_setup import get_google_cal # Access Google Acc
 from tzlocal import get_localzone # Get local timezone
 from check_available import vacancy_based_on_freq # Check available timeslot
 from create_event import create_calendar, create_event # Create Calendar and Event
+import webbrowser
 
 app = Flask(__name__)
 
@@ -36,7 +37,7 @@ def result():
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length)
 
-        return redirect(result)
+        return render_template("result.html"), webbrowser.open_new_tab(result)
 
 @app.route('/overview')
 def overview():

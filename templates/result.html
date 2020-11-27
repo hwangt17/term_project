@@ -18,7 +18,7 @@
   <link href="{{ url_for('static', filename='images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ url_for('static', filename='images/webclip.png') }}" rel="apple-touch-icon">
 </head>
-<body class="body">
+<body class="home_body">
   <div data-collapse="tiny" data-animation="default" data-duration="400" role="banner" class="navbar w-nav">
     <div class="container w-container">
       <a href="{{url_for('index')}}" class="w-nav-brand"><img src="{{ url_for('static', filename='images/Fillup_Logo_alt.svg') }}" loading="lazy" alt="" class="nav_logo_img"></a>
@@ -31,15 +31,13 @@
       </div>
     </div>
   </div>
-  <div class="text_section">
-    <div class="text_container w-container">
-      <div class="header_block">
-        <h1 class="heading">Result</h1>
-      </div>
+  <div class="hero_section">
+    <div class="hero_container w-container">
+      <h1 class="title_heading">Cogratulations!</h1>
       <div class="text_subsection_block">
-        <h3 class="sub-heading">What is Fillup?</h3>
-        <p class="paragraph-2"><strong>Did you ever feel stressed organizing your calendar? Do you want your personal secretary to neatly arrange your day?</strong><br>Fillup, a scheduling automation application, eases the stress of the scheduling process. Users are asked to input the task’s title, duration, choice of morning or afternoon, and frequency a test per week. Based on this given criteria, the application will randomly select the available time block in the user&#x27;s calendar.</p>
+        <p class="paragraph-2">You have successfully filled-up your calendar.</p>
       </div>
+      <a href="{{url_for('automate')}}" class="cta_button w-button"><strong>Try Again!</strong></a>
     </div>
   </div>
   <div class="footer-wrap">
