@@ -20,7 +20,7 @@ app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SECRET_KEY'] = 'super secret key'
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/')
 def index():
     return render_template("index.html")
 
