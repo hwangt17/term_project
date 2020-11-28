@@ -11,8 +11,8 @@ import httplib2
 import random
 from oauth2client import client
 from googleapiclient.discovery import build, build_from_document
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
+# from google_auth_oauthlib.flow import InstalledAppFlow
+# from google.auth.transport.requests import Request
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
