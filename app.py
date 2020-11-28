@@ -9,7 +9,7 @@ import os.path
 import json
 import httplib2
 import random
-from oauth2client import client
+# from oauth2client import client
 from googleapiclient.discovery import build, build_from_document
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -53,7 +53,8 @@ def result():
     #     return redirect(url_for('oauth2callback'))
     # else:
     #     http_auth = credentials.authorize(httplib2.Http())
-        service = build('calendar', 'v3', http = http_auth)
+    #     service = build('calendar', 'v3', http = http_auth)
+    service = ''
 
         if request.method == 'POST':
             title = request.form['Task Name']
