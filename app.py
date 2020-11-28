@@ -11,8 +11,8 @@ import httplib2
 import random
 from oauth2client import client
 from googleapiclient.discovery import build, build_from_document
-# from google_auth_oauthlib.flow import InstalledAppFlow
-# from google.auth.transport.requests import Request
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
@@ -27,7 +27,7 @@ def index():
 @app.route('/oauth2callback')
 def oauth2callback():
     flow = client.flow_from_clientsecrets(
-        'credentials.json',
+        'google-client-secret.json',
         scope='https://www.googleapis.com/auth/calendar',
         redirect_uri=url_for('oauth2callback', _external=True))
 
