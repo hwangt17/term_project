@@ -24,21 +24,21 @@ app.config['SECRET_KEY'] = 'super secret key'
 def index():
     return render_template("index.html")
 
-@app.route('/oauth2callback')
-def oauth2callback():
-    flow = client.flow_from_clientsecrets(
-        'google-client-secret.json',
-        scope='https://www.googleapis.com/auth/calendar',
-        redirect_uri=url_for('oauth2callback', _external=True))
+# @app.route('/oauth2callback')
+# def oauth2callback():
+#     flow = client.flow_from_clientsecrets(
+#         'credentials.json',
+#         scope='https://www.googleapis.com/auth/calendar',
+#         redirect_uri=url_for('oauth2callback', _external=True))
 
-    if 'code' not in request.args:
-        auth_uri = flow.step1_get_authorize_url()
-        return redirect(auth_uri)
-    else:
-        auth_code = request.args.get('code')
-        credentials = flow.step2_exchange(auth_code)
-        session['credentials'] = credentials.to_json()
-        return redirect(url_for('result'))
+#     if 'code' not in request.args:
+#         auth_uri = flow.step1_get_authorize_url()
+#         return redirect(auth_uri)
+#     else:
+#         auth_code = request.args.get('code')
+#         credentials = flow.step2_exchange(auth_code)
+#         session['credentials'] = credentials.to_json()
+#         return redirect(url_for('result'))
 
 @app.route('/automate', methods=['POST','GET'])
 def automate():
@@ -46,13 +46,13 @@ def automate():
 
 @app.route('/result', methods=['POST','GET'])
 def result():
-    if 'credentials' not in session:
-        return redirect(url_for('oauth2callback'))
-    credentials = client.OAuth2Credentials.from_json(session['credentials'])
-    if credentials.access_token_expired:
-        return redirect(url_for('oauth2callback'))
-    else:
-        http_auth = credentials.authorize(httplib2.Http())
+    # if 'credentials' not in session:
+    #     return redirect(url_for('oauth2callback'))
+    # credentials = client.OAuth2Credentials.from_json(session['credentials'])
+    # if credentials.access_token_expired:
+    #     return redirect(url_for('oauth2callback'))
+    # else:
+    #     http_auth = credentials.authorize(httplib2.Http())
         service = build('calendar', 'v3', http = http_auth)
 
         if request.method == 'POST':
