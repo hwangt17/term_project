@@ -22,7 +22,7 @@ def store_events(service,count, earliest, latest):
         if start == None:
             pass
         else:
-            no_isoformat_start = date.fromisoformat(str(start))
+            no_isoformat_start = datetime.fromisoformat(str(start))
             event_vessel.append(no_isoformat_start)
 
         # Get Time Only (end)
