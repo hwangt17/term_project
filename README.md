@@ -21,8 +21,7 @@ When you enter [*Fillup*](http://tryfillup.herokuapp.com/), you should start the
 
 ## Results 
 
-- Show off what it can do with video/screenshot 
-- Graph on data 
+- Show off what it can do with video/screenshot + Graph on data 
 
 ## Project Evolution
 
@@ -33,5 +32,5 @@ Contemplating such a common issue, our team decided to create an application tha
 
 ## Attribution
 
-Portions of this page are modifications based on work created and [shared by Google](https://developers.google.com/terms/site-policies) and used according to terms described in [the Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/). Also, it is attributed to the [Stackabuse](https://stackabuse.com/deploying-a-flask-application-to-heroku/).
+Portions of this application are modifications based on work created and [shared by Google](https://developers.google.com/terms/site-policies) and used according to terms described in [the Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/). Also, the application is attributed to the [Stackabuse](https://stackabuse.com/deploying-a-flask-application-to-heroku/).
 
