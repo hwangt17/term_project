@@ -27,8 +27,6 @@ def creds_dict(credentials):
 
 @app.route('/')
 def index():
-    if 'creds' in session:
-        del session['creds']
     return render_template("index.html")          
 
 @app.route('/auth')
@@ -58,6 +56,31 @@ def oauth2callback():
     session['creds'] = creds_dict(creds)
 
     return redirect(url_for('result'))  
+
+@app.route('/revoke')
+def revoke():
+  if 'credentials' not in session:
+    return ('You need to <a href="/authorize">authorize</a> before ' +
+            'testing the code to revoke credentials.')
+
+  creds = credentials.Credentials(**session['creds'])
+
+  revoke = requests.post('https://oauth2.googleapis.com/revoke',
+      params={'token': creds.token},
+      headers = {'content-type': 'application/x-www-form-urlencoded'})
+
+  status_code = getattr(revoke, 'status_code')
+  if status_code == 200:
+    return ('Credentials successfully revoked.')
+  else:
+    return ('An error occurred.')
+
+
+@app.route('/clear')
+def clear_credentials():
+  if 'creds' in session:
+    del session['creds']
+  return ('Credentials have been cleared.<br><br>')
 
 @app.route('/automate', methods=['POST','GET'])
 def automate():
