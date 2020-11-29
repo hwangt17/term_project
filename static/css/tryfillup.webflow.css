@@ -38,7 +38,7 @@ div#loading {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #3300ff;
+  background-color: transparent;
 }
 
 .hero_container {
