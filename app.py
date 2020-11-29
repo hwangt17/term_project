@@ -55,7 +55,7 @@ def oauth2callback():
     creds = flow.credentials
     session['creds'] = creds_dict(creds)
 
-    return redirect(url_for('result'))  
+    return redirect(url_for('automate'))  
 
 @app.route('/revoke')
 def revoke():
