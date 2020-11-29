@@ -26,6 +26,11 @@ When you enter [*Fillup*](http://tryfillup.herokuapp.com/), you should start the
 
 ## Project Evolution
 
+We often encounter a struggle to find a time slot to perform a trivial but important task, such as exercising, stretching, reading books and calling parents. Working as a group, our team promised to individually spend half an hour once a week to work on the given task. However, we found ourselves making an excuse and complaining about our tight schedule. 
+
+Contemplating such a common issue, our team decided to create an application that assists scheduling based on the available time in the user’s Google Calendar. 
+
+
 ## Attribution
 
 Portions of this page are modifications based on work created and [shared by Google](https://developers.google.com/terms/site-policies) and used according to terms described in [the Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/). Also, it is attributed to the [Stackabuse](https://stackabuse.com/deploying-a-flask-application-to-heroku/).
