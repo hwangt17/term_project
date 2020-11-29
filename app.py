@@ -27,6 +27,9 @@ def creds_dict(credentials):
 
 @app.route('/')
 def index():
+    local_tz = get_localzone() # Call the Local Timezone
+    local_timezone = str(local_tz) # Convert to string 
+    print(local_timezone)
     return render_template("index.html")          
 
 @app.route('/auth')
