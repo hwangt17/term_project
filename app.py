@@ -30,6 +30,7 @@ def index():
     local_tz = get_localzone() # Call the Local Timezone
     local_timezone = str(local_tz) # Convert to string 
     print(local_timezone)
+
     return render_template("index.html")          
 
 @app.route('/auth')
@@ -75,20 +76,21 @@ def result():
     # check available and create calendar/events
     if request.method == 'POST':
         title = request.form['Task Name']
+        timezone = request.form['Timezone']
         length = request.form['Duration']
         frequency = request.form['Frequency']
         earliest_time = request.form['Earliest']
         latest_time = request.form['Latest']
             
-        cal_id = create_calendar(service, title)
+        cal_id = create_calendar(service, title, timezone)
 
-        vacant = vacancy_based_on_freq(service,int(length),int(frequency),int(earliest_time),int(latest_time))
+        vacant = vacancy_based_on_freq(service,int(length),int(frequency),int(earliest_time),int(latest_time),timezone)
             
         for index, value in vacant.items():
             available_start = vacant[index][0]
             start = (available_start + timedelta(minutes=15)).isoformat()
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
-            result = create_event(service, cal_id, start, end, title, frequency, length)
+            result = create_event(service, cal_id, start, end, title, frequency, length, timezone)
             session['result_link'] = str(result.get('htmlLink'))
     
     session['creds'] = creds_dict(creds)

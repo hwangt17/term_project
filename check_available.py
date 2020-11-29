@@ -56,11 +56,11 @@ def store_events(service,count, earliest, latest):
     return index_events
 
 ### BOTTLENECK! NEED FIXING ###
-def check_vacancy(service,duration,count,earliest,latest):
+def check_vacancy(service,duration,count,earliest,latest, local_timezone):
     """
     Check vacant time block of a given duration.
     """
-    local_tz = get_localzone() # Call the Local Timezone
+    local_tz = local_timezone # Call the Local Timezone
     vacant_times = {}
     events = store_events(service,count,earliest,latest)
     
@@ -96,18 +96,18 @@ def check_vacancy(service,duration,count,earliest,latest):
         else:
             pass
 
-def vacancy_based_on_freq(service,duration,frequency,earliest,latest):
+def vacancy_based_on_freq(service,duration,frequency,earliest,latest,local_timezone):
     """
     Check vacant timeslot with the user inputed duration for the frequency/week the user inputed.
     """
     result = {}
     week = 7
     for i in range(week):
-        if check_vacancy(service,duration,i+1,earliest,latest) == None:
+        if check_vacancy(service,duration,i+1,earliest,latest,local_timezone) == None:
             print(f'No slots left on this date. Still {frequency} spots left in the week to fill.')
             pass
         else:
-            result[i+1] = check_vacancy(service,duration,i+1,earliest,latest)
+            result[i+1] = check_vacancy(service,duration,i+1,earliest,latest,local_timezone)
             frequency -= 1
             print(f'Yes! There is a timeslot! Now {frequency} spots left in the week.')
         if frequency == 0:

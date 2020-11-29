@@ -3,12 +3,12 @@ from cal_setup import get_google_cal # Access Google Acc
 from tzlocal import get_localzone # Get local timezone
 from check_available import vacancy_based_on_freq # Check available timeslot
 
-def create_calendar(service, title):
+def create_calendar(service, title, local_timezone):
     """
     Create an calendar with the same name as the new event.
     """
-    local_tz = get_localzone() # Call the Local Timezone
-    local_timezone = str(local_tz) # Convert to string
+    # local_tz = get_localzone() # Call the Local Timezone
+    # local_timezone = str(local_tz) # Convert to string
     
     # Calendar Parameter
     calendar = {
@@ -22,12 +22,12 @@ def create_calendar(service, title):
     print("calendar Title: ", title)
     return created_calendar['id']
 
-def create_event(service, cal_id, start, end, title, count, length):
+def create_event(service, cal_id, start, end, title, count, length, local_timezone):
     """
     Create Event.
     """
-    local_tz = get_localzone() # Call the Local Timezone
-    local_timezone = str(local_tz) # Convert to string 
+    # local_tz = get_localzone() # Call the Local Timezone
+    # local_timezone = str(local_tz) # Convert to string 
 
     # Event Parameter
     event = {
