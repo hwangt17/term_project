@@ -2,6 +2,7 @@ from datetime import datetime, timedelta # Datetime
 from cal_setup import get_google_cal # Access Google Acc
 from tzlocal import get_localzone # Get local timezone
 from list_event import get_list_event # Get list of all events
+import pytz
 
 def store_events(service,count, earliest, latest):
     """
@@ -60,7 +61,7 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
     """
     Check vacant time block of a given duration.
     """
-    local_tz = local_timezone # Call the Local Timezone
+    local_tz = pytz.timezone(local_timezone) # Call the Local Timezone
     vacant_times = {}
     events = store_events(service,count,earliest,latest)
     
