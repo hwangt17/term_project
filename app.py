@@ -61,7 +61,7 @@ def oauth2callback():
 @app.route('/revoke')
 def revoke():
   if 'credentials' not in session:
-    return ('You need to <a href="/authorize">authorize</a> before ' +
+    return ('You need to <a href="/auth">authorize</a> before ' +
             'testing the code to revoke credentials.')
 
   creds = credentials.Credentials(**session['creds'])
@@ -106,7 +106,6 @@ def result():
             start = (available_start + timedelta(minutes=15)).isoformat()
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length, timezone)
-            session['result_link'] = str(result.get('htmlLink'))
     
     session['creds'] = creds_dict(creds)
 
@@ -116,8 +115,7 @@ def result():
 def result_link():
     if 'creds' in session:
         del session['creds']
-    link = session['result_link']
-    return redirect(link)
+    return redirect("https://calendar.google.com/calendar/b/1/r/week")
 
 @app.route('/overview')
 def overview():
