@@ -9,50 +9,56 @@ import os.path
 import json
 import httplib2
 import random
-from oauth2client import client
 from google.oauth2 import credentials
 from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
+from google_auth_oauthlib.flow import Flow
 from google.auth.transport.requests import Request
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 CREDENTIALS_FILE = 'credentials.json'
 
 app = Flask(__name__)
-app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SECRET_KEY'] = 'super secret key'
+app.secret_key = 'secret key'
+
+def creds_dict(credentials):
+  return { 'token': credentials.token,
+          'refresh_token': credentials.refresh_token,
+          'token_uri': credentials.token_uri,
+          'client_id': credentials.client_id,
+          'client_secret': credentials.client_secret,
+          'scopes': credentials.scopes}
 
 @app.route('/')
 def index():
-    return render_template("index.html")
-
-# @app.route('/oauth2callback')
-# def oauth2callback():
-    # flow = client.flow_from_clientsecrets(
-    #     'credentials.json',
-    #     scope='https://www.googleapis.com/auth/calendar',
-    #     redirect_uri=url_for('oauth2callback', _external=True))
-
-#     if 'code' not in request.args:
-        # auth_uri = flow.step1_get_authorize_url()
-#         return redirect(auth_uri)
-#     else:
-#         auth_code = request.args.get('code')
-#         credentials = flow.step2_exchange(auth_code)
-#         session['credentials'] = credentials.to_json()
-#         return redirect(url_for('result'))            
+    return render_template("index.html")          
 
 @app.route('/auth')
 def auth():
-    flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES,redirect_uri=url_for('result', _external=True))
-    if 'code' not in request.args:
-        auth_uri = flow.authorization_url()
-        (url,state) = auth_uri
-        return redirect(url)
-    else:
-        session['creds'] = flow.run_local_server(port=0)
-        return redirect(url_for('result'))
+    flow = Flow.from_client_secrets_file(CREDENTIALS_FILE, scopes=SCOPES)
+    flow.redirect_uri = url_for('oauth2callback', _external=True)
 
+    (auth_url, state) = flow.authorization_url(access_type='offline', include_granted_scopes='true')
+
+    session['state'] = state
+
+    return redirect(auth_url)
+
+@app.route('/oauth2callback')
+def oauth2callback():
+    state = session['state']
+
+    flow = Flow.from_client_secrets_file(CREDENTIALS_FILE, scopes=SCOPES, state=state)
+    flow.redirect_uri = url_for('oauth2callback', _external=True)
+
+    authorization_response = request.url
+    if 'http:' in authorization_response:
+        authorization_response = 'https:' + authorization_response[5:]
+    flow.fetch_token(authorization_response=authorization_response)
+
+    creds = flow.credentials
+    session['creds'] = creds_dict(creds)
+
+    return redirect(url_for('result'))  
 
 @app.route('/automate', methods=['POST','GET'])
 def automate():
@@ -60,21 +66,12 @@ def automate():
 
 @app.route('/result', methods=['POST','GET'])
 def result():
-    # if 'credentials' not in session:
-    #     return redirect(url_for('oauth2callback'))
-    # credentials = client.OAuth2Credentials.from_json(session['credentials'])
-    # if credentials.access_token_expired:
-    #     return redirect(url_for('oauth2callback'))
-    # else:
-    #     http_auth = credentials.authorize(httplib2.Http())
-    #     service = build('calendar', 'v3', http = http_auth)
-    
     if 'creds' not in session:
         return redirect(url_for('auth'))
-    creds = session['creds']
-
+    creds = credentials.Credentials(**session['creds'])
+    print(creds)
     service = build('calendar', 'v3', credentials=creds)
-    
+
     if request.method == 'POST':
         title = request.form['Task Name']
         length = request.form['Duration']
@@ -92,7 +89,9 @@ def result():
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length)
 
-    return render_template('result.html'), webbrowser.open_new_tab(result)
+    session['creds'] = creds_dict(creds)
+
+    return render_template('result.html'), webbrowser.open_new_tab(result.get('htmlLink'))
 
 @app.route('/overview')
 def overview():
