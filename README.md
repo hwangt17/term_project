@@ -10,14 +10,14 @@ Fillup, a scheduling automation application, eases the stress of the scheduling 
 
 ## How Does It Work?
 
-[user flow](/Users/yerilee/Documents/GitHub/term_project_/static/images/userflow.png)
+![user flow](/Users/yerilee/Documents/GitHub/term_project_/static/images/userflow.png)
 
 When you enter [Fillup](https:// ), you should start the application by clicking on the “Get Started” button. This will ask for the permission to give Fillup an authorization to your Google Calendar. After the authorization, you will be asked to fill in the title of a task, duration, choice of Morning or Afternoon, and frequency of a task per week. By clicking on the “Create” button, you will then receive a confirmation and choice to direct to Google Calendar. 
 
 
 ## Implementation Information 
 
-[code diagram](/Users/yerilee/Documents/GitHub/term_project_/static/images/code_diagram.png) 
+<img src="static/images/code_diagram.png" alt="image">
 
 ## Results 
 
