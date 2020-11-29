@@ -28,5 +28,5 @@ When you enter [*Fillup*](http://tryfillup.herokuapp.com/), you should start the
 
 ## Attribution
 
-Portions of this page are modifications based on work created and [shared by Google](https://developers.google.com/terms/site-policies) and used according to terms described in [the Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/). It is also attributed to the [Stackabuse](https://stackabuse.com/deploying-a-flask-application-to-heroku/).
+Portions of this page are modifications based on work created and [shared by Google](https://developers.google.com/terms/site-policies) and used according to terms described in [the Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/). Also, it is attributed to the [Stackabuse](https://stackabuse.com/deploying-a-flask-application-to-heroku/).
 
