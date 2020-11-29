@@ -1,14 +1,11 @@
-from flask import Flask, render_template, session, request, redirect, url_for, abort
+from flask import Flask, render_template, session, request, redirect, url_for, abort # Flask
 from datetime import datetime, timedelta # Datetime
 from tzlocal import get_localzone # Get local timezone
 from check_available import vacancy_based_on_freq # Check available timeslot
 from create_event import create_calendar, create_event # Create Calendar and Event
-import webbrowser
-import pickle
-import os.path
-import json
-import httplib2
-import random
+import webbrowser # To open new web tab
+
+# Google Authentication 
 from google.oauth2 import credentials
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import Flow
