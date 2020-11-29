@@ -69,6 +69,7 @@ def result():
     print(creds)
     service = build('calendar', 'v3', credentials=creds)
 
+    # check available and create calendar/events
     if request.method == 'POST':
         title = request.form['Task Name']
         length = request.form['Duration']
@@ -85,16 +86,16 @@ def result():
             start = (available_start + timedelta(minutes=15)).isoformat()
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length)
-            session['result_link'] = result.get('htmlLink')
+            session['result_link'] = str(result.get('htmlLink'))
     
-    # session['creds'] = creds_dict(creds)
+    session['creds'] = creds_dict(creds)
 
-    return render_template('result.html', result_link = result_link)
+    return render_template('result.html')
 
 @app.route('/result_link')
 def result_link():
-    result_link = session['result_link']
-    return redirect(result_link)
+    link = session['result_link']
+    return redirect(link)
 @app.route('/overview')
 def overview():
     return render_template("overview.html")
