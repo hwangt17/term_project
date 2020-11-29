@@ -91,16 +91,17 @@ def result():
             start = (available_start + timedelta(minutes=15)).isoformat()
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length, timezone)
-            session['result_link'] = str(result.get('htmlLink'))
+            # session['result_link'] = str(result.get('htmlLink'))
     
     session['creds'] = creds_dict(creds)
 
     return render_template('result.html')
 
-@app.route('/result_link')
-def result_link():
-    link = session['result_link']
-    return redirect(link)
+# @app.route('/result_link')
+# def result_link():
+#     link = session['result_link']
+#     return redirect(link)
+
 @app.route('/overview')
 def overview():
     return render_template("overview.html")
