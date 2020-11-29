@@ -118,8 +118,9 @@ def vacancy_based_on_freq(service,duration,frequency,earliest,latest,local_timez
 
 def main():
     service = get_google_cal() # Call the Calendar API
+    timezone = 'Asia/Seoul'
     
-    vacant = vacancy_based_on_freq(service,60,2,7,23)
+    vacant = vacancy_based_on_freq(service,60,2,7,23,timezone)
     for index, value in vacant.items():
         a = vacant[index][0]
         print(a)

@@ -51,6 +51,7 @@ def create_event(service, cal_id, start, end, title, count, length, local_timezo
 
 def main():
     service = get_google_cal()
+    timezone = 'Asia/Seoul'
 
     title = input("Enter Event Title -> ")
     frequency = input("How many times a week -> ")
@@ -58,14 +59,14 @@ def main():
     earliest_time = input("When do you want the events to start at the earliest? (Enter 0 ~ 23)-> ")
     latest_time = input("When do you want the events to end at the lastest? (Enter 0 ~ 23) -> ")
     print("-----------------------")
-    cal_id = create_calendar(service, title)
+    cal_id = create_calendar(service, title, timezone)
 
-    vacant = vacancy_based_on_freq(service,int(length),int(frequency),int(earliest_time),int(latest_time))
+    vacant = vacancy_based_on_freq(service,int(length),int(frequency),int(earliest_time),int(latest_time),timezone)
     for index, value in vacant.items():
         available_start = vacant[index][0]
         start = (available_start + timedelta(minutes=15)).isoformat()
         end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
-        create_event(service, cal_id, start, end, title, frequency, length)
+        create_event(service, cal_id, start, end, title, frequency, length, timezone)
 
 if __name__ == '__main__':
     main()

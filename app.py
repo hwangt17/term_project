@@ -4,7 +4,8 @@ from tzlocal import get_localzone # Get local timezone
 from check_available import vacancy_based_on_freq # Check available timeslot
 from create_event import create_calendar, create_event # Create Calendar and Event
 import webbrowser # To open new web tab
-
+import os
+import requests
 # Google Authentication 
 from google.oauth2 import credentials
 from googleapiclient.discovery import build
@@ -55,7 +56,7 @@ def oauth2callback():
     creds = flow.credentials
     session['creds'] = creds_dict(creds)
 
-    return redirect(url_for('automate'))  
+    return redirect(url_for('result'))  
 
 @app.route('/revoke')
 def revoke():
@@ -74,13 +75,6 @@ def revoke():
     return ('Credentials successfully revoked.')
   else:
     return ('An error occurred.')
-
-
-@app.route('/clear')
-def clear_credentials():
-  if 'creds' in session:
-    del session['creds']
-  return ('Credentials have been cleared.<br><br>')
 
 @app.route('/automate', methods=['POST','GET'])
 def automate():
@@ -120,6 +114,8 @@ def result():
 
 @app.route('/result_link')
 def result_link():
+    if 'creds' in session:
+        del session['creds']
     link = session['result_link']
     return redirect(link)
 
@@ -136,4 +132,7 @@ def not_found_error(error):
     return render_template("404.html"), 404
 
 if __name__ == '__main__':
-    app.run(threaded=True) 
+    
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+    app.run('localhost', 8080, debug=True) 
