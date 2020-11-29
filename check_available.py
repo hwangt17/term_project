@@ -1,11 +1,8 @@
 from datetime import datetime, timedelta # Datetime
-from backports.datetime_fromisoformat import MonkeyPatch
 from cal_setup import get_google_cal # Access Google Acc
 from tzlocal import get_localzone # Get local timezone
 from list_event import get_list_event # Get list of all events
 import pytz
-
-MonkeyPatch.patch_fromisoformat()
 
 def store_events(service,count, earliest, latest):
     """
