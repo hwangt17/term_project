@@ -1,0 +1,3 @@
+[console_scripts]
+oauth2_tool = google_oauth2_tool.__main__:main
+

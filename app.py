@@ -9,12 +9,14 @@ import os.path
 import json
 import httplib2
 import random
-# from oauth2client import client
-from googleapiclient.discovery import build, build_from_document
+from oauth2client import client
+from google.oauth2 import credentials
+from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
+CREDENTIALS_FILE = 'credentials.json'
 
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -26,23 +28,35 @@ def index():
 
 # @app.route('/oauth2callback')
 # def oauth2callback():
-#     flow = client.flow_from_clientsecrets(
-#         'credentials.json',
-#         scope='https://www.googleapis.com/auth/calendar',
-#         redirect_uri=url_for('oauth2callback', _external=True))
+    # flow = client.flow_from_clientsecrets(
+    #     'credentials.json',
+    #     scope='https://www.googleapis.com/auth/calendar',
+    #     redirect_uri=url_for('oauth2callback', _external=True))
 
 #     if 'code' not in request.args:
-#         auth_uri = flow.step1_get_authorize_url()
+        # auth_uri = flow.step1_get_authorize_url()
 #         return redirect(auth_uri)
 #     else:
 #         auth_code = request.args.get('code')
 #         credentials = flow.step2_exchange(auth_code)
 #         session['credentials'] = credentials.to_json()
-#         return redirect(url_for('result'))
+#         return redirect(url_for('result'))            
+
+@app.route('/auth')
+def auth():
+    flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES,redirect_uri=url_for('result', _external=True))
+    if 'code' not in request.args:
+        auth_uri = flow.authorization_url()
+        (url,state) = auth_uri
+        return redirect(url)
+    else:
+        session['creds'] = flow.run_local_server(port=0)
+        return redirect(url_for('result'))
+
 
 @app.route('/automate', methods=['POST','GET'])
 def automate():
-    return render_template("automate.html")
+    return render_template('automate.html')
 
 @app.route('/result', methods=['POST','GET'])
 def result():
@@ -54,8 +68,13 @@ def result():
     # else:
     #     http_auth = credentials.authorize(httplib2.Http())
     #     service = build('calendar', 'v3', http = http_auth)
-    service = ''
+    
+    if 'creds' not in session:
+        return redirect(url_for('auth'))
+    creds = session['creds']
 
+    service = build('calendar', 'v3', credentials=creds)
+    
     if request.method == 'POST':
         title = request.form['Task Name']
         length = request.form['Duration']

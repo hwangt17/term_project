@@ -1,0 +1,109 @@
+Metadata-Version: 2.1
+Name: google-oauth2-tool
+Version: 0.0.3
+Summary: Create OAuth2 key file from OAuth2 client id file
+Home-page: https://github.com/dlancer/google-oauth2-tool
+Author: dlancer
+Author-email: dmdpost@gmail.com
+Maintainer: dlancer
+Maintainer-email: dmdpost@gmail.com
+License: BSD
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Development Status :: 3 - Alpha
+Requires-Python: >=3.5
+Requires-Dist: cachetools
+Requires-Dist: google-api-python-client
+Requires-Dist: google-auth
+Requires-Dist: google-auth-httplib2
+Requires-Dist: httplib2
+Requires-Dist: oauth2client
+Requires-Dist: pyasn1
+Requires-Dist: pyasn1-modules
+Requires-Dist: rsa
+Requires-Dist: six
+Requires-Dist: uritemplate
+Provides-Extra: test
+Requires-Dist: atomicwrites ; extra == 'test'
+Requires-Dist: attrs ; extra == 'test'
+Requires-Dist: coverage ; extra == 'test'
+Requires-Dist: entrypoints ; extra == 'test'
+Requires-Dist: flake8 ; extra == 'test'
+Requires-Dist: isort ; extra == 'test'
+Requires-Dist: mccabe ; extra == 'test'
+Requires-Dist: more-itertools ; extra == 'test'
+Requires-Dist: pluggy ; extra == 'test'
+Requires-Dist: py ; extra == 'test'
+Requires-Dist: pycodestyle ; extra == 'test'
+Requires-Dist: pyflakes ; extra == 'test'
+Requires-Dist: pygments ; extra == 'test'
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: six ; extra == 'test'
+Requires-Dist: v ; extra == 'test'
+
+Create OAuth2 key file from OAuth2 client id file
+=================================================
+
+Simple wrapper for oauth2client.tools module.
+
+
+.. image:: https://travis-ci.org/dlancer/google-oauth2-tool.svg?branch=master
+    :target: https://travis-ci.org/dlancer/google-oauth2-tool/
+    :alt: Build status
+
+.. image:: https://img.shields.io/pypi/v/google-oauth2-tool.svg
+    :target: https://pypi.python.org/pypi/google-oauth2-tool/
+    :alt: Latest PyPI version
+
+.. image:: https://img.shields.io/pypi/format/google-oauth2-tool.svg
+    :target: https://pypi.python.org/pypi/google-oauth2-tool/
+    :alt: Download format
+
+.. image:: https://img.shields.io/pypi/l/google-oauth2-tool.svg
+    :target: https://pypi.python.org/pypi/google-oauth2-tool/
+    :alt: License
+
+Installation
+============
+
+
+PIP
+---
+
+You can install the latest stable package running this command::
+
+    $ pip install google_oauth2_tool
+
+
+Also you can install the development version running this command::
+
+    $ pip install git+http://github.com/dlancer/google_oauth2_tool.git@dev
+
+
+Usage
+=====
+
+Before you start you should:
+
+1. Create Google OAuth2 client id key in the Google Developers console.
+
+2. Create file with required Google API scopes.
+
+From command line::
+
+    $ oauth2_tool --help
+
+    $ oauth2_tool --source=client_id.json --scope=scopes.txt --destination=oauth2_key.json [--strip=true]
+
+
