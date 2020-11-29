@@ -87,7 +87,7 @@ def result():
             result = create_event(service, cal_id, start, end, title, frequency, length)
             session['result_link'] = result.get('htmlLink')
     
-    session['creds'] = creds_dict(creds)
+    # session['creds'] = creds_dict(creds)
 
     return render_template('result.html', result_link = result_link)
 
