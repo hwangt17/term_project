@@ -32,5 +32,5 @@ Contemplating such a common issue, our team decided to create an application tha
 
 ## Attribution
 
-Portions of this application are modifications based on work created and [shared by Google](https://developers.google.com/terms/site-policies) and used according to terms described in [the Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/). Also, the application is attributed to the [Stackabuse](https://stackabuse.com/deploying-a-flask-application-to-heroku/).
+Portions of this application are modifications based on work created and [shared by Google](https://developers.google.com/terms/site-policies) and used according to terms described in [the Creative Commons 4.0 Attribution License](https://creativecommons.org/licenses/by/4.0/). Also, the application is attributed to the [Stackabuse](https://stackabuse.com/deploying-a-flask-application-to-heroku/) and [google-auth-oauthlib](https://google-auth-oauthlib.readthedocs.io/en/latest/) for reference to documentations and how-to.
 
