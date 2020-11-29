@@ -3,7 +3,6 @@ from cal_setup import get_google_cal # Access Google Acc
 from tzlocal import get_localzone # Get local timezone
 from list_event import get_list_event # Get list of all events
 import pytz
-import dateutil.parser
 
 def store_events(service,count, earliest, latest):
     """
@@ -24,7 +23,7 @@ def store_events(service,count, earliest, latest):
             pass
         else:
             print(start)
-            no_isoformat_start = dateutil.parser.isoparse(str(start))
+            no_isoformat_start = datetime.strftime(str(start),'%m/%d/%y %H:%M:%S')
             print(no_isoformat_start)
             event_vessel.append(no_isoformat_start)
 
@@ -32,7 +31,7 @@ def store_events(service,count, earliest, latest):
         if end == None:
             pass
         else:
-            no_isoformat_end = dateutil.parser.isoparse(str(end))
+            no_isoformat_end = datetime.strftime(str(end),'%m/%d/%y %H:%M:%S')
             event_vessel.append(no_isoformat_end)
 
         if event_vessel == []:
