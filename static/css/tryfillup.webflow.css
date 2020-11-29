@@ -7,6 +7,7 @@ div#loading {
   }
 
 .hero_section {
+  color: #fff;
   position: static;
   left: 0%;
   top: 0%;
@@ -41,6 +42,7 @@ div#loading {
 }
 
 .hero_container {
+  color: #fff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -690,6 +692,13 @@ div#loading {
   font-family: Montserrat, sans-serif;
   color: #fff;
   text-align: left;
+}
+
+.sub-heading-center {
+  margin-bottom: 10px;
+  font-family: Montserrat, sans-serif;
+  color: #fff;
+  text-align: center;
 }
 
 .paragraph-2 {
