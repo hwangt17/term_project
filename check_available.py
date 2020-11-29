@@ -23,6 +23,7 @@ def store_events(service,count, earliest, latest):
             pass
         else:
             no_isoformat_start = datetime.fromisoformat(str(start))
+            print(no_isoformat_start)
             event_vessel.append(no_isoformat_start)
 
         # Get Time Only (end)
@@ -30,6 +31,7 @@ def store_events(service,count, earliest, latest):
             pass
         else:
             no_isoformat_end = datetime.fromisoformat(str(end))
+            print(no_isoformat_end)
             event_vessel.append(no_isoformat_end)
 
         if event_vessel == []:
@@ -42,13 +44,15 @@ def store_events(service,count, earliest, latest):
     # Sort events in order
     sorted_values = sorted(store_event.values()) # Sort the values
     sorted_events = {}
+ 
+    print('Sorting Events...')
 
     for i in sorted_values:
         for k in store_event.keys():
             if store_event[k] == i:
                 sorted_events[k] = store_event[k]
                 break
-    
+
     # Index events
     index_events = {}
     for index, (key, (start, end)) in enumerate(sorted_events.items()):
