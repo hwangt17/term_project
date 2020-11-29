@@ -37,15 +37,21 @@
         <h1 class="heading">Welcome to Fillup.</h1>
       </div>
       <div class="text_subsection_block">
-        <h3 class="sub-heading">What is Fillup?</h3>
-        <p class="paragraph-2"><strong>Did you ever feel stressed organizing your calendar? Do you want your personal secretary to neatly arrange your day?</strong><br>Fillup, a scheduling automation application, eases the stress of the scheduling process. Users are asked to input the task’s title, duration, choice of morning or afternoon, and frequency a test per week. Based on this given criteria, the application will randomly select the available time block in the user&#x27;s calendar.</p>
+        <h3 class="sub-heading">What Is Fillup?</h3>
+        <p class="paragraph-2"><strong>Did you ever feel stressed organizing your calendar? Do you want your personal secretary to neatly arrange your day?</strong><br><br>Fillup, a scheduling automation application, eases the stress of the scheduling process. Users are asked to input the task’s title, duration, choice of morning or afternoon, and frequency a test per week. Based on this given criteria, the application will randomly select the available time block in the user&#x27;s calendar.<br><br><a href="https://github.com/hwangt17/term_project/blob/master/proposal.md" target="_blank" class="link">Check our project proposal here.</a></p>
       </div>
       <div class="text_subsection_block">
-        <h3 class="sub-heading">How Does It Work?</h3><img src="{{ url_for('static', filename='images/userflow.png') }}" loading="lazy" srcset="images/user-flow.png 500w, images/user-flow.png 800w, images/user-flow.png 1080w, images/user-flow.png 1546w" sizes="(max-width: 767px) 80vw, (max-width: 991px) 582.390625px, 752px" alt="" class="text_image">
+        <h3 class="sub-heading">How Does It Work?</h3>
+        <p class="paragraph-2"> <br></p>
+        <img src="{{ url_for('static', filename='images/user-flow-alt.png') }}" loading="lazy" srcset="{{ url_for('static', filename='images/user-flow-alt.png') }} 500w, {{ url_for('static', filename='images/user-flow-alt.png') }} 800w, {{ url_for('static', filename='images/user-flow-alt.png') }} 1080w, {{ url_for('static', filename='images/user-flow-alt.png') }} 1546w" sizes="(max-width: 767px) 80vw, (max-width: 991px) 582.390625px, 752px" alt="" class="text_image">
+        <p class="paragraph-2"> </p>
         <p class="paragraph-2">When you enter <a href="{{url_for('index')}}" class="link">Fillup</a>, you should start the application by clicking on the “Get Started” button. This will ask for the permission to give Fillup an authorization to your Google Calendar. After the authorization, you will be asked to fill in the title of a task, duration, choice of Morning or Afternoon, and frequency of a task per week. By clicking on the “Create” button, you will then receive a confirmation and choice to direct to Google Calendar.</p>
       </div>
       <div class="text_subsection_block">
-        <h3 class="sub-heading">Implementation Information</h3><img src="{{ url_for('static', filename='images/code_diagram.png') }}" loading="lazy" srcset="images/code-diagram.png 500w, images/code-diagram.png 800w, images/code-diagram.png 1080w, images/code-diagram.png 1548w" sizes="(max-width: 767px) 80vw, (max-width: 991px) 582.390625px, 752px" alt="" class="text_image">
+        <h3 class="sub-heading">Implementation Information</h3>
+        <p class="paragraph-2"> <br></p>
+        <img src="{{ url_for('static', filename='images/app-arch-no-bg.png') }}" loading="lazy" srcset="{{ url_for('static', filename='images/app-arch-no-bg.png') }} 500w, {{ url_for('static', filename='images/app-arch-no-bg.png') }} 800w, {{ url_for('static', filename='images/app-arch-no-bg.png') }} 1080w, {{ url_for('static', filename='images/app-arch-no-bg.png') }} 1548w" sizes="(max-width: 100%), (max-width: 100%)" alt="" class="text_image">
+        <p class="paragraph-2"> </p>
       </div>
       <div class="text_subsection_block">
         <h3 class="sub-heading">Results</h3>
@@ -56,11 +62,11 @@
       </div>
       <div class="text_subsection_block">
         <h3 class="sub-heading">Project Evaluation</h3>
-        <p class="paragraph-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        <p class="paragraph-2">We often encounter a struggle to find a time slot to perform a trivial but important task, such as exercising, stretching, reading books and calling parents. Working as a group, our team promised to individually spend half an hour once a week to work on the given task. However, we found ourselves making an excuse and complaining about our tight schedule.<br><br>Contemplating such a common issue, our team decided to create an application that assists scheduling based on the available time in the user’s Google Calendar.</p>
       </div>
       <div class="text_subsection_block">
         <h3 class="sub-heading">Attribution</h3>
-        <p class="paragraph-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+        <p class="paragraph-2">Portions of this application are modifications based on work created and <a href="https://developers.google.com/terms/site-policies" target="_blank" class="link">shared by Google</a> and used according to terms described in the<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" class="link"> Creative Commons 4.0 Attribution License</a>. Also, the application is attributed to the <a href="https://stackabuse.com/deploying-a-flask-application-to-heroku/" target="_blank" class="link">Stackabuse</a>.</p>
       </div>
     </div>
   </div>

@@ -38,7 +38,7 @@ div#loading {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: transparent;
+  background-color: #3300ff;
 }
 
 .hero_container {
@@ -717,6 +717,10 @@ div#loading {
   text-decoration: none;
 }
 
+.text-link:hover {
+  text-decoration: underline;
+}
+
 .text_image {
   margin-bottom: 20px;
 }
@@ -781,8 +785,20 @@ div#loading {
 }
 
 .footer-link:hover {
-  color: #30f;
+  font-weight: 600;
   text-decoration: none;
+}
+
+.text-link{
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.text-link:hover{
+  color: #fff;
+  text-decoration: underline;
 }
 
 .text-block-4 {
