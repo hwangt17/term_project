@@ -78,12 +78,12 @@ def revoke():
 
 @app.route('/automate', methods=['POST','GET'])
 def automate():
+    if 'creds' not in session:
+        return redirect(url_for('auth'))
     return render_template('automate.html')
 
 @app.route('/result', methods=['POST','GET'])
 def result():
-    if 'creds' not in session:
-        return redirect(url_for('auth'))
     creds = credentials.Credentials(**session['creds'])
     print(creds)
     service = build('calendar', 'v3', credentials=creds)
@@ -107,7 +107,7 @@ def result():
             end = (available_start + timedelta(minutes=(15+int(length)))).isoformat()
             result = create_event(service, cal_id, start, end, title, frequency, length, timezone)
     
-    session['creds'] = creds_dict(creds)
+    # session['creds'] = creds_dict(creds)
 
     return render_template('result.html')
 
@@ -133,4 +133,4 @@ if __name__ == '__main__':
     
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-    app.run('localhost', 8080, debug=True) 
+    app.run('localhost', 5000, debug=True) 
