@@ -23,7 +23,7 @@ def store_events(service,count, earliest, latest):
             pass
         else:
             print(start)
-            no_isoformat_start = (str(start))
+            no_isoformat_start = datetime.fromisoformat(str(start))
             print(no_isoformat_start)
             event_vessel.append(no_isoformat_start)
 
@@ -31,7 +31,7 @@ def store_events(service,count, earliest, latest):
         if end == None:
             pass
         else:
-            no_isoformat_end = (str(end))
+            no_isoformat_end = datetime.fromisoformat(str(end))
             event_vessel.append(no_isoformat_end)
 
         if event_vessel == []:
@@ -71,7 +71,7 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
     
     # List all vacant timeslots and it's duration in order.
     for i in range(len(events)+1):
-        # from 7:00:00 to the start of first event.
+        # from user set earliest time to the start of first event.
         if i == 0: 
             if not events:
                 now = datetime.utcnow() # Get the datetime now in UTC Timezone
@@ -80,7 +80,7 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
             else:
                 end = events[i][0]
                 start = datetime(end.year, end.month, end.day, earliest).astimezone(local_tz)
-        # from end of the last event to 23:00:00.
+        # from end of the last event to be user set latest time.
         elif i >= len(events):
             start = events[i-1][1]
             end = events[i] = datetime(start.year, start.month, start.day, latest).astimezone(local_tz)
