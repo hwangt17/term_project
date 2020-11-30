@@ -33,7 +33,7 @@ def index():
 @app.route('/auth')
 def auth():
     flow = Flow.from_client_secrets_file(CREDENTIALS_FILE, scopes=SCOPES)
-    flow.redirect_uri = url_for("https://tryfillup.herokuapp.com/result", _external=True)
+    flow.redirect_uri = url_for("https://tryfillup.herokuapp.com/oauth2callback", _external=True)
 
     (auth_url, state) = flow.authorization_url(access_type='offline', include_granted_scopes='true')
 
@@ -46,7 +46,7 @@ def oauth2callback():
     state = session['state']
 
     flow = Flow.from_client_secrets_file(CREDENTIALS_FILE, scopes=SCOPES, state=state)
-    flow.redirect_uri = url_for("https://tryfillup.herokuapp.com/result", _external=True)
+    flow.redirect_uri = url_for("https://tryfillup.herokuapp.com/oauth2callback", _external=True)
 
     authorization_response = request.url
     if 'http:' in authorization_response:
