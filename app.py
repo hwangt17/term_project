@@ -13,7 +13,7 @@ from google_auth_oauthlib.flow import Flow
 from google.auth.transport.requests import Request
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-CREDENTIALS_FILE = 'credentials.json'
+CREDENTIALS_FILE = 'new_credentials.json'
 
 app = Flask(__name__)
 app.secret_key = 'secret key'
