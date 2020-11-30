@@ -56,25 +56,7 @@ def oauth2callback():
     creds = flow.credentials
     session['creds'] = creds_dict(creds)
 
-    return redirect(url_for('result'))  
-
-@app.route('/revoke')
-def revoke():
-  if 'credentials' not in session:
-    return ('You need to <a href="/auth">authorize</a> before ' +
-            'testing the code to revoke credentials.')
-
-  creds = credentials.Credentials(**session['creds'])
-
-  revoke = requests.post('https://oauth2.googleapis.com/revoke',
-      params={'token': creds.token},
-      headers = {'content-type': 'application/x-www-form-urlencoded'})
-
-  status_code = getattr(revoke, 'status_code')
-  if status_code == 200:
-    return ('Credentials successfully revoked.')
-  else:
-    return ('An error occurred.')
+    return redirect(url_for('automate'))  
 
 @app.route('/automate', methods=['POST','GET'])
 def automate():

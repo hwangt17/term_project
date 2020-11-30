@@ -23,7 +23,7 @@ def store_events(service,count, earliest, latest):
             pass
         else:
             print(start)
-            no_isoformat_start = datetime.strftime(str(start),'%m/%d/%y %H:%M:%S')
+            no_isoformat_start = datetime.fromisoformat(str(start))
             print(no_isoformat_start)
             event_vessel.append(no_isoformat_start)
 
@@ -31,7 +31,7 @@ def store_events(service,count, earliest, latest):
         if end == None:
             pass
         else:
-            no_isoformat_end = datetime.strftime(str(end),'%m/%d/%y %H:%M:%S')
+            no_isoformat_end = datetime.fromisoformat(str(end))
             event_vessel.append(no_isoformat_end)
 
         if event_vessel == []:
