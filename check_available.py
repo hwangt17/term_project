@@ -91,6 +91,8 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
             else:
                 start = events[i-1][1]
                 end = events[i][0]
+        print(start)
+        print(end)
         length = end - start # length of each time block
         vacant_times[i+1] = (start, end, length)
 
