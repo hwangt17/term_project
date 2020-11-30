@@ -190,14 +190,11 @@
             </div>
           </div><input type="submit" value="Submit" data-wait="Please wait..." class="submit-button w-button" onclick="$('#loading').show();">
         </form>
-        <div id="loading" style="display:none; text-align: center;"><img src="{{ url_for('static', filename='images/loadingimage.gif') }}" class="img" alt="" />Creating Your Task...</div>
-        <div class="success-message w-form-done">
-          <div class="text-block-2">You Have Successfully Created the task!</div>
-        </div>
         <div class="error-message w-form-fail">
           <div class="text-block-3">Oops! Something went wrong. Please try again.</div>
         </div>
       </div>
+      <div id="loading" style="display:none; text-align: center;"><img src="{{ url_for('static', filename='images/loadingimage.gif') }}" class="img" alt="" />Creating Your Task...</div>
     </div>
   </div>
   <div class="footer-wrap">
