@@ -19,7 +19,7 @@ def create_calendar(service, title, local_timezone):
     # Create Calendar
     created_calendar = service.calendars().insert(body=calendar).execute()
     print("\nCreated Calendar:")
-    print("calendar Title: ", title)
+    print("Calendar Title: ", title)
     return created_calendar['id']
 
 def create_event(service, cal_id, start, end, title, count, length, local_timezone):
@@ -41,11 +41,10 @@ def create_event(service, cal_id, start, end, title, count, length, local_timezo
 
     # Print on Terminal
     print("\nCreated Event:")
-    print("event id: ", create_event['id'])
-    print("summary: ", create_event['summary'])
-    print("starts at: ", create_event['start']['dateTime'])
-    print("ends at: ", create_event['end']['dateTime'])
-    print("calendar link: ", create_event.get('htmlLink'))
+    print("Event ID: ", create_event['id'])
+    print("Event Title: ", create_event['summary'])
+    print("Starts at: ", create_event['start']['dateTime'])
+    print("Ends at: ", create_event['end']['dateTime'])
     return create_event
 
 
