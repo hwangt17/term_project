@@ -4,13 +4,13 @@ from tzlocal import get_localzone # Get local timezone
 from list_event import get_list_event # Get list of all events
 import pytz
 
-def store_events(service,count, earliest, latest):
+def store_events(service,count, earliest, latest, local_timezone):
     """
     This function reads the user's schedule for a given day, detecting start and end time of each event. 
     """
     store_event = dict()
     event_vessel = list()
-    events = get_list_event(service,count,earliest,latest)
+    events = get_list_event(service,count,earliest,latest,local_timezone)
     i = 1
     
     for event in events:
@@ -67,7 +67,7 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
     """
     local_tz = pytz.timezone(local_timezone) # Call the Local Timezone
     vacant_times = {}
-    events = store_events(service,count,earliest,latest)
+    events = store_events(service,count,earliest,latest,local_timezone)
     
     # List all vacant timeslots and it's duration in order.
     for i in range(len(events)+1):
