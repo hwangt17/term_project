@@ -75,15 +75,15 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
         if i == 0: 
             if not events:
                 now = datetime.utcnow() # Get the datetime now in UTC Timezone
-                start = datetime(now.year, now.month, now.day, earliest).astimezone(local_tz)+timedelta(days=count)
-                end = datetime(now.year, now.month, now.day, latest).astimezone(local_tz)+timedelta(days=count)
+                start = datetime(now.year, now.month, now.day, earliest, tzinfo=local_tz).astimezone(local_tz)+timedelta(days=count)
+                end = datetime(now.year, now.month, now.day, latest, tzinfo=local_tz).astimezone(local_tz)+timedelta(days=count)
             else:
                 end = events[i][0]
-                start = datetime(end.year, end.month, end.day, earliest).astimezone(local_tz)
+                start = datetime(end.year, end.month, end.day, earliest, tzinfo=local_tz).astimezone(local_tz)
         # from end of the last event to be user set latest time.
         elif i >= len(events):
             start = events[i-1][1]
-            end = events[i] = datetime(start.year, start.month, start.day, latest).astimezone(local_tz)
+            end = events[i] = datetime(start.year, start.month, start.day, latest, tzinfo=local_tz).astimezone(local_tz)
         # inbetween events (end of the one to start of next).
         else:
             if events[i-1][1] == events[i][0]:
@@ -123,13 +123,19 @@ def vacancy_based_on_freq(service,duration,frequency,earliest,latest,local_timez
 
 
 def main():
-    service = get_google_cal() # Call the Calendar API
-    timezone = 'Asia/Seoul'
+    local_tz = pytz.timezone('America/New_York')
 
-    vacant = vacancy_based_on_freq(service,60,2,7,23,timezone)
-    for index, value in vacant.items():
-        a = vacant[index][0]
-        print(a)
+    now = datetime.now().astimezone(local_tz) # Get the datetime now in UTC Timezone
+    print(now)
+    start = datetime(now.year, now.month, now.day, 7, tzinfo=local_tz).astimezone(local_tz)
+    print(start)
+
+    # service = get_google_cal() # Call the Calendar API
+    # timezone = 'Asia/Seoul'
+    # vacant = vacancy_based_on_freq(service,60,2,7,23,timezone)
+    # for index, value in vacant.items():
+    #     a = vacant[index][0]
+    #     print(a)
     # print(check_vacancy(service,60,2,7,23))
 
 
