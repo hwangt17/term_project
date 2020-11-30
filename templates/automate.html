@@ -19,6 +19,7 @@
   <link href="{{ url_for('static', filename='images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
   <link href="{{ url_for('static', filename='images/webclip.png') }}" rel="apple-touch-icon">
 </head>
+<div id="loading" style="display:none; text-align: center;"><img src="{{ url_for('static', filename='images/loadingimage.gif') }}" class="img" alt="" />Creating Your Task...</div>
 <body class="body">
   <div data-collapse="tiny" data-animation="default" data-duration="400" role="banner" class="navbar w-nav">
     <div class="container w-container">
@@ -194,7 +195,6 @@
           <div class="text-block-3">Oops! Something went wrong. Please try again.</div>
         </div>
       </div>
-      <div id="loading" style="display:none; text-align: center;"><img src="{{ url_for('static', filename='images/loadingimage.gif') }}" class="img" alt="" />Creating Your Task...</div>
     </div>
   </div>
   <div class="footer-wrap">
