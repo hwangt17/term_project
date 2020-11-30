@@ -75,15 +75,15 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
         if i == 0: 
             if not events:
                 now = datetime.utcnow() # Get the datetime now in UTC Timezone
-                start = datetime(now.year, now.month, now.day, earliest, tzinfo=local_tz).astimezone(local_tz)+timedelta(days=count)
-                end = datetime(now.year, now.month, now.day, latest, tzinfo=local_tz).astimezone(local_tz)+timedelta(days=count)
+                start = local_tz.localize(datetime(now.year, now.month, now.day, earliest))+timedelta(days=count)
+                end = local_tz.localize(datetime(now.year, now.month, now.day, latest))+timedelta(days=count)
             else:
                 end = events[i][0]
-                start = datetime(end.year, end.month, end.day, earliest, tzinfo=local_tz).astimezone(local_tz)
+                start = local_tz.localize(datetime(end.year, end.month, end.day, earliest))
         # from end of the last event to be user set latest time.
         elif i >= len(events):
             start = events[i-1][1]
-            end = events[i] = datetime(start.year, start.month, start.day, latest, tzinfo=local_tz).astimezone(local_tz)
+            end = events[i] = local_tz.localize(datetime(start.year, start.month, start.day, latest))
         # inbetween events (end of the one to start of next).
         else:
             if events[i-1][1] == events[i][0]:
@@ -123,11 +123,11 @@ def vacancy_based_on_freq(service,duration,frequency,earliest,latest,local_timez
 
 
 def main():
-    local_tz = pytz.timezone('Asia/Seoul')
-
+    local_tz = pytz.timezone('Australia/Adelaide')
     now = datetime.now() # Get the datetime now in UTC Timezone
-    print(now)
-    start = datetime(now.year, now.month, now.day, 7)
+    # start = now.astimezone(local_tz)
+    
+    start = local_tz.localize(datetime(now.year, now.month, now.day, 7))+timedelta(days=1)
     print(start)
     print(start.astimezone(local_tz))
     y = datetime(2020,12,1,7,15,00)
