@@ -91,8 +91,8 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
             else:
                 start = events[i-1][1]
                 end = events[i][0]
-        print(start)
-        print(end)
+        start.astimezone(local_tz)
+        end.astimezone(local_tz)
         length = end - start # length of each time block
         vacant_times[i+1] = (start, end, length)
 
@@ -123,13 +123,17 @@ def vacancy_based_on_freq(service,duration,frequency,earliest,latest,local_timez
 
 
 def main():
-    local_tz = pytz.timezone('America/New_York')
+    local_tz = pytz.timezone('Asia/Seoul')
 
-    now = datetime.now().astimezone(local_tz) # Get the datetime now in UTC Timezone
+    now = datetime.now() # Get the datetime now in UTC Timezone
     print(now)
-    start = datetime(now.year, now.month, now.day, 7, tzinfo=local_tz).astimezone(local_tz)
+    start = datetime(now.year, now.month, now.day, 7)
     print(start)
-
+    print(start.astimezone(local_tz))
+    y = datetime(2020,12,1,7,15,00)
+    print(y)
+    g = y.astimezone(local_tz)
+    print(g)
     # service = get_google_cal() # Call the Calendar API
     # timezone = 'Asia/Seoul'
     # vacant = vacancy_based_on_freq(service,60,2,7,23,timezone)
@@ -137,7 +141,6 @@ def main():
     #     a = vacant[index][0]
     #     print(a)
     # print(check_vacancy(service,60,2,7,23))
-
 
 if __name__ == '__main__':
     main()
