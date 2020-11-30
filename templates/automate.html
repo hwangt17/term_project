@@ -2,6 +2,7 @@
 <!--  Last Published: Fri Nov 27 2020 10:56:32 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5fbf65f62a3ba655ca12fc89" data-wf-site="5fbf537870905e7fc8a76f75">
 <head>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <meta charset="utf-8">
   <title>Automate</title>
   <meta content="Automate" property="og:title">
@@ -187,8 +188,9 @@
                   <option value="23">11PM</option>
                 </select></div>
             </div>
-          </div><input type="submit" value="Submit" data-wait="Please wait..." class="submit-button w-button">
+          </div><input type="submit" value="Submit" data-wait="Please wait..." class="submit-button w-button" onclick="$('#loading').show();">
         </form>
+        <div id="loading" style="display:none;"><img src="{{ url_for('static', filename='images/loadingimage.gif') }}" alt="" />Loading...</div>
         <div class="success-message w-form-done">
           <div class="text-block-2">You Have Successfully Created the task!</div>
         </div>
