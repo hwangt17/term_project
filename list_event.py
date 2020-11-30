@@ -19,15 +19,17 @@ def get_list_event(service, count, earliest, latest, local_timezone):
     # print(f'From: {beginning_format} \nTo: {ending_format}')
 
     # Get list of calendars
+    print("Getting list of calendars...")
     cal_ids = list()
     page_token = None
     calendar_list = service.calendarList().list(pageToken=page_token).execute()
     calendars = calendar_list.get('items', [])
     for calendar in calendars:
         cal_ids.append(calendar['id'])
-    # print(cal_ids)
+    print(cal_ids)
 
     # Getting list of events from all calendars 
+    print("Getting list of events...")
     events = list()
     for cal_id in cal_ids:
         events_result = service.events().list(
@@ -35,14 +37,14 @@ def get_list_event(service, count, earliest, latest, local_timezone):
             timeZone=local_tz, maxResults=1000, singleEvents=True,
             orderBy='startTime').execute()
         events.extend(events_result.get('items'))
-    print("Getting list of events...")
+    print(events)
     return events
 
 def main():
     service = get_google_cal() # Call the Calendar API
-
+    local_tz = 'Asia/Seoul'
     # Print on terminal
-    events = get_list_event(service,3,7,23)
+    events = get_list_event(service,3,7,23,local_tz)
     print('Getting List Events')
     if not events:
         print('No upcoming events found.')

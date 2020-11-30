@@ -95,7 +95,7 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
         end = end.astimezone(local_tz)
         length = end - start # length of each time block
         vacant_times[i+1] = (start, end, length)
-
+    print(vacant_times)
     # Finds the vacant timeslot from the list of vacant timeslots that works with the duration set by the user.
     for index, (start,end,length) in vacant_times.items():
         if vacant_times[index][2] >= timedelta(seconds=(duration+30)*60):
@@ -123,24 +123,13 @@ def vacancy_based_on_freq(service,duration,frequency,earliest,latest,local_timez
 
 
 def main():
-    local_tz = pytz.timezone('Australia/Adelaide')
-    now = datetime.now() # Get the datetime now in UTC Timezone
-    # start = now.astimezone(local_tz)
-    
-    start = local_tz.localize(datetime(now.year, now.month, now.day, 7))+timedelta(days=1)
-    print(start)
-    print(start.astimezone(local_tz))
-    y = datetime(2020,12,1,7,15,00)
-    print(y)
-    g = y.astimezone(local_tz)
-    print(g)
-    # service = get_google_cal() # Call the Calendar API
-    # timezone = 'Asia/Seoul'
-    # vacant = vacancy_based_on_freq(service,60,2,7,23,timezone)
-    # for index, value in vacant.items():
-    #     a = vacant[index][0]
-    #     print(a)
-    # print(check_vacancy(service,60,2,7,23))
+    service = get_google_cal() # Call the Calendar API
+    timezone = 'Asia/Seoul'
+    vacant = vacancy_based_on_freq(service,60,2,12,23,timezone)
+    for index, value in vacant.items():
+        a = vacant[index][0]
+        print(a)
+    # print(check_vacancy(service,60,2,6,23,timezone))
 
 if __name__ == '__main__':
     main()
