@@ -12,7 +12,7 @@ Fillup, a scheduling automation application, eases the stress of the scheduling 
 
 <img src="static/images/user-flow.png" alt="image">
 
-When you enter [*Fillup*](http://tryfillup.herokuapp.com/), you should start the application by clicking on the “Get Started” button. This will ask for the permission to give Fillup an authorization to your Google Calendar. After the authorization, you will be asked to fill in the title of a task, duration, time boundry, and frequency of a task per week. By clicking on the “Create” button, you will then receive a confirmation and choice to direct to Google Calendar. 
+When you enter [*Fillup*](https://tryfillup.herokuapp.com/), you should start the application by clicking on the “Get Started” button. This will ask for the permission to give Fillup an authorization to your Google Calendar. After the authorization, you will be asked to fill in the title of a task, duration, time boundry, and frequency of a task per week. By clicking on the “Create” button, you will then receive a confirmation and choice to direct to Google Calendar. 
 
 
 ## Implementation Information 
