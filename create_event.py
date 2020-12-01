@@ -6,6 +6,10 @@ from check_available import vacancy_based_on_freq # Check available timeslot
 def create_calendar(service, title, local_timezone):
     """
     Create an calendar with the same name as the new event.
+    
+    service: get authentication from google
+    title: the title of the calendar
+    local_timezone: assigned timezone
     """
     # local_tz = get_localzone() # Call the Local Timezone
     # local_timezone = str(local_tz) # Convert to string
@@ -24,7 +28,16 @@ def create_calendar(service, title, local_timezone):
 
 def create_event(service, cal_id, start, end, title, count, length, local_timezone):
     """
-    Create Event.
+    Create an event in assigned calendar.
+
+    service: get authentication from Google
+    cal_id: Calendar ID 
+    start: datetime format of the start time of the event
+    end: datetime format of the end time of the event
+    title: title of the event (str)
+    count: count of days (used for range)
+    length: length of event (int)
+    local_timezone: assigned timezone
     """
     # local_tz = get_localzone() # Call the Local Timezone
     # local_timezone = str(local_tz) # Convert to string 

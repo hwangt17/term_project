@@ -55,8 +55,10 @@
       </div>
       <div class="text_subsection_block">
         <h3 class="sub-heading">Results</h3>
+        <p class="paragraph-2"> <br></p>
         <video width='100%' controls><source src="{{ url_for('static', filename='images/fillup_howto.mp4') }}" loading="lazy" srcset="{{ url_for('static', filename='images/fillup_howto.mp4') }} 500w, {{ url_for('static', filename='images/fillup_howto.mp4') }} 800w, {{ url_for('static', filename='images/fillup_howto.mp4') }} 1080w, {{ url_for('static', filename='images/fillup_howto.mp4') }} 1546w" sizes="(max-width: 767px) 80vw, (max-width: 991px) 582.390625px, 752px" alt="" class="text_image" type="video/mp4"></video>
-      </div>
+        <p class="paragraph-2">This is a short video on how our website works.</p>
+        </div>
       <div class="text_subsection_block">
         <h3 class="sub-heading">Project Evolution</h3>
         <p class="paragraph-2">We often encounter a struggle to find a time slot to perform a trivial but important task, such as exercising, stretching, reading books and calling parents. Working as a group, our team promised to individually spend half an hour once a week to work on the given task. However, we found ourselves making an excuse and complaining about our tight schedule.<br><br>Contemplating such a common issue, our team decided to create an application that assists scheduling based on the available time in the user’s Google Calendar. Although it was simple creating an event at first, our team encountered a problem when coming up with the random assigning of a created event. All our code could do was create an event on a pre-determined time. Further analyzing the problem, our team realized that create_event.py should be supplemented by another supporting package that would check availability in the user's calendar before creating an event as the original code had the problem of creating conflicting simultaneous events. Thus, in using these two packages, our team enabled random assigning of a created event on to the user's Google Calendar, reaching our end goal of making an application that would find the user's free time and fill it up.</p>

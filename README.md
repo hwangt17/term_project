@@ -21,7 +21,7 @@ When you enter [*Fillup*](http://tryfillup.herokuapp.com/), you should start the
 
 ## Results 
 
-- Show off what it can do with video/screenshot + Graph on data 
+[![Watch the video](static/images/fillup_howto_screenshot.png)](https://tryfillup.herokuapp.com/static/images/fillup_howto.mp4)
 
 ## Project Evolution
 

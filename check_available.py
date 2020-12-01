@@ -4,9 +4,15 @@ from tzlocal import get_localzone # Get local timezone
 from list_event import get_list_event # Get list of all events
 import pytz
 
-def store_events(service,count, earliest, latest, local_timezone):
+def store_events(service, count, earliest, latest, local_timezone):
     """
     This function reads the user's schedule for a given day, detecting start and end time of each event. 
+
+    service: get authentication from Google
+    count: count of days (used for range)
+    earliest: earliest time for timeframe (int)
+    latest: latest time for timeframe (int)
+    local_timezone: assigned timezone
     """
     store_event = dict()
     event_vessel = list()
@@ -64,6 +70,13 @@ def store_events(service,count, earliest, latest, local_timezone):
 def check_vacancy(service,duration,count,earliest,latest, local_timezone):
     """
     Check vacant time block of a given duration.
+    
+    service: get authentication from Google
+    duration: the length of the new event (int)
+    count: count of days (used for range)
+    earliest: earliest time for timeframe (int)
+    latest: latest time for timeframe (int)
+    local_timezone: assigned timezone
     """
     local_tz = pytz.timezone(local_timezone) # Call the Local Timezone
     vacant_times = {}
@@ -106,6 +119,13 @@ def check_vacancy(service,duration,count,earliest,latest, local_timezone):
 def vacancy_based_on_freq(service,duration,frequency,earliest,latest,local_timezone):
     """
     Check vacant timeslot with the user inputed duration for the frequency/week the user inputed.
+    
+    service: get authentication from Google
+    duration: the length of the new event (int)
+    frequency: number of days in a week (int)
+    earliest: earliest time for timeframe (int)
+    latest: latest time for timeframe (int)
+    local_timezone: assigned timezone
     """
     result = {}
     week = 7

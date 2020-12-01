@@ -6,7 +6,13 @@ import pytz
 def get_list_event(service, count, earliest, latest, local_timezone):
     """
     Get all events from all calendars.
+
+    service: get authentication from google
     count: count of days (used for range)
+    earliest: earliest time for timeframe (int)
+    latest: latest time for timeframe (int)
+    local_timezone: assigned timezone
+
     """
     local_tz = pytz.timezone(local_timezone) # Call the Local Timezone
 
