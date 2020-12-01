@@ -27,7 +27,7 @@ When you enter [*Fillup*](http://tryfillup.herokuapp.com/), you should start the
 
 We often encounter a struggle to find a time slot to perform a trivial but important task, such as exercising, stretching, reading books and calling parents. Working as a group, our team promised to individually spend half an hour once a week to work on the given task. However, we found ourselves making an excuse and complaining about our tight schedule. 
 
-Contemplating such a common issue, our team decided to create an application that assists scheduling based on the available time in the user’s Google Calendar. 
+Contemplating such a common issue, our team decided to create an application that assists scheduling based on the available time in the user’s Google Calendar. Although it was simple creating an event at first, our team encountered a problem when coming up with the random assigning of a created event. All our code could do was create an event on a pre-determined time. Further analyzing the problem, our team realized that create_event.py should be supplemented by another supporting package that would check availability in the user's calendar before creating an event as the original code had the problem of creating conflicting simultaneous events. Thus, in using these two packages, our team enabled random assigning of a created event on to the user's Google Calendar, reaching our end goal of making an application that would find the user's free time and fill it up. 
 
 
 ## Attribution
