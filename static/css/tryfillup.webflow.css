@@ -772,7 +772,7 @@ div#loading {
 .footer-link {
   display: block;
   margin-bottom: 0px;
-  padding-right: 5%;
+  padding-right: 20px;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
