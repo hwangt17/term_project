@@ -107,6 +107,14 @@ def overview():
 def about():
     return render_template("about.html")
 
+@app.route('/terms')
+def terms():
+    return render_template("terms.html")
+
+@app.route('/privacy')
+def privacy():
+    return render_template("privacy.html")
+
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template("404.html"), 404
